@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Brainstorm Canvas - Part 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f9fafb;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1f2937;
+        }
+        
+        .header p {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+        
+        .workflow-nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .nav-button.current {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+        
+        .nav-button.next {
+            background: #f3f4f6;
+            color: #6b7280;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .nav-button.next:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+        
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .card h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 15px;
+        }
+        
+        .card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 12px;
+            margin-top: 20px;
+        }
+        
+        .card h3:first-of-type {
+            margin-top: 0;
+        }
+        
+        .content-input {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+        
+        .content-input:focus {
+            outline: none;
+            border-color: #f97316;
+        }
+        
+        .parse-button {
+            width: 100%;
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .parse-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+        
+        .insert-category {
+            margin-bottom: 20px;
+        }
+        
+        .insert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .insert-item {
+            position: relative;
+        }
+        
+        .insert-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 13px;
+            transition: border-color 0.2s;
+        }
+        
+        .insert-input:focus {
+            outline: none;
+            border-color: #f97316;
+        }
+        
+        .insert-label {
+            position: absolute;
+            top: -8px;
+            left: 8px;
+            background: white;
+            padding: 0 4px;
+            font-size: 10px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .generate-button {
+            width: 100%;
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+        
+        .generate-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+        }
+        
+        .headlines-container {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .headline-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .headline-item:hover {
+            border-color: #f97316;
+            background: #fef3e7;
+        }
+        
+        .headline-item.selected {
+            border-color: #f97316;
+            background: #fef3e7;
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.2);
+        }
+        
+        .formula-name {
+            font-size: 11px;
+            color: #f97316;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .headline-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+        
+        .subheadline-text {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+        
+        .body-text {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        
+        .export-section {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        
+        .export-button {
+            width: 100%;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+        
+        .export-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+        }
+        
+        .export-button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .skip-button {
+            width: 100%;
+            background: transparent;
+            color: #6b7280;
+            padding: 12px 24px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .skip-button:hover {
+            border-color: #d1d5db;
+            color: #374151;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .insert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .workflow-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Hero Brainstorm Canvas</h1>
+            <p>Transform your raw ideas into powerful hero section content</p>
+            <div class="workflow-nav">
+                <div class="nav-button current">Part 1: Brainstorm Canvas</div>
+                <div class="nav-button next">Part 2: Hero Tool</div>
+            </div>
+        </div>
+        
+        <div class="main-layout">
+            <div class="left-panel">
+                <!-- Content Input -->
+                <div class="card">
+                    <h2>📝 Paste Your Raw Content</h2>
+                    <textarea class="content-input" id="rawContent" placeholder="Paste your marketing brief, product description, customer feedback, or any raw content here. The tool will intelligently parse it to fill in the categorized inserts below.
+
+Example: 'Our customers are small business owners who struggle with managing leads effectively. They currently use spreadsheets which are time-consuming and error-prone. Our AI-powered CRM helps them prioritize leads automatically, resulting in 30% more closed deals without hiring more staff.'"></textarea>
+                    <button class="parse-button" onclick="parseContent()">🤖 Smart Parse Content</button>
+                </div>
+                
+                <!-- Categorized Inserts -->
+                <div class="card">
+                    <h2>🎯 Categorized Inserts</h2>
+                    <p style="font-size: 14px; color: #6b7280; margin-bottom: 20px;">Edit these fields to refine your messaging. They'll be used to generate headlines below.</p>
+                    
+                    <!-- Audience/Identity -->
+                    <div class="insert-category">
+                        <h3>👥 Audience/Identity</h3>
+                        <div class="insert-grid">
+                            <div class="insert-item">
+                                <div class="insert-label">Specific Audience</div>
+                                <input type="text" class="insert-input" id="specificAudience" placeholder="e.g., small business owners">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Audience</div>
+                                <input type="text" class="insert-input" id="audience" placeholder="e.g., entrepreneurs">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Aspirational Identity</div>
+                                <input type="text" class="insert-input" id="aspirationalIdentity" placeholder="e.g., sales leaders">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Current State</div>
+                                <input type="text" class="insert-input" id="currentState" placeholder="e.g., administrators">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Problem/Pain -->
+                    <div class="insert-category">
+                        <h3>😤 Problem/Pain</h3>
+                        <div class="insert-grid">
+                            <div class="insert-item">
+                                <div class="insert-label">Problem</div>
+                                <input type="text" class="insert-input" id="problem" placeholder="e.g., managing leads effectively">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Struggle</div>
+                                <input type="text" class="insert-input" id="struggle" placeholder="e.g., tracking opportunities">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Current Limitation</div>
+                                <input type="text" class="insert-input" id="currentLimitation" placeholder="e.g., limited engagement capacity">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Painful Current State</div>
+                                <input type="text" class="insert-input" id="painfulCurrentState" placeholder="e.g., spreadsheet chaos">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Uncomfortable Truth</div>
+                                <input type="text" class="insert-input" id="uncomfortableTruth" placeholder="e.g., wasting 60% of their time">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Losing Something</div>
+                                <input type="text" class="insert-input" id="losingSomething" placeholder="e.g., deals to faster competitors">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Solution/Product -->
+                    <div class="insert-category">
+                        <h3>💡 Solution/Product</h3>
+                        <div class="insert-grid">
+                            <div class="insert-item">
+                                <div class="insert-label">Solution</div>
+                                <input type="text" class="insert-input" id="solution" placeholder="e.g., AI-powered prioritization">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Tool</div>
+                                <input type="text" class="insert-input" id="tool" placeholder="e.g., CRM">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">New Category</div>
+                                <input type="text" class="insert-input" id="newCategory" placeholder="e.g., Revenue Intelligence">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Alternative</div>
+                                <input type="text" class="insert-input" id="alternative" placeholder="e.g., better signal">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">What It Does Differently</div>
+                                <input type="text" class="insert-input" id="whatItDoesDifferently" placeholder="e.g., thinks, not just records">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Outcome/Benefit -->
+                    <div class="insert-category">
+                        <h3>🎯 Outcome/Benefit</h3>
+                        <div class="insert-grid">
+                            <div class="insert-item">
+                                <div class="insert-label">Outcome</div>
+                                <input type="text" class="insert-input" id="outcome" placeholder="e.g., 30% more closed deals">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Achieve Outcome</div>
+                                <input type="text" class="insert-input" id="achieveOutcome" placeholder="e.g., Close 30% more deals">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Desired Future State</div>
+                                <input type="text" class="insert-input" id="desiredFutureState" placeholder="e.g., pipeline clarity">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Benefit A</div>
+                                <input type="text" class="insert-input" id="benefitA" placeholder="e.g., Speed">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Benefit B</div>
+                                <input type="text" class="insert-input" id="benefitB" placeholder="e.g., accuracy">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Hidden Advantage</div>
+                                <input type="text" class="insert-input" id="hiddenAdvantage" placeholder="e.g., biggest strength">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Descriptive/Qualifier -->
+                    <div class="insert-category">
+                        <h3>📋 Descriptive/Qualifier</h3>
+                        <div class="insert-grid">
+                            <div class="insert-item">
+                                <div class="insert-label">Adjective</div>
+                                <input type="text" class="insert-input" id="adjective" placeholder="e.g., AI-powered">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Solves Gap</div>
+                                <input type="text" class="insert-input" id="solvesGap" placeholder="e.g., tells you WHO to call">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Common Sacrifice</div>
+                                <input type="text" class="insert-input" id="commonSacrifice" placeholder="e.g., hiring more staff">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Common Requirement</div>
+                                <input type="text" class="insert-input" id="commonRequirement" placeholder="e.g., more leads">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Uncommon Metric</div>
+                                <input type="text" class="insert-input" id="uncommonMetric" placeholder="e.g., buyer intent">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Comparison/Contrast -->
+                    <div class="insert-category">
+                        <h3>⚖️ Comparison/Contrast</h3>
+                        <div class="insert-grid">
+                            <div class="insert-item">
+                                <div class="insert-label">Old Way</div>
+                                <input type="text" class="insert-input" id="oldWay" placeholder="e.g., chasing every lead">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">New Way</div>
+                                <input type="text" class="insert-input" id="newWay" placeholder="e.g., closing the right ones">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Succeed</div>
+                                <input type="text" class="insert-input" id="succeed" placeholder="e.g., prioritize with data">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Struggle</div>
+                                <input type="text" class="insert-input" id="struggle2" placeholder="e.g., guess">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Proof/Evidence -->
+                    <div class="insert-category">
+                        <h3>📊 Proof/Evidence</h3>
+                        <div class="insert-grid">
+                            <div class="insert-item">
+                                <div class="insert-label">Specific Data Point</div>
+                                <input type="text" class="insert-input" id="specificDataPoint" placeholder="e.g., 23% win rate increase">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Claim</div>
+                                <input type="text" class="insert-input" id="claim" placeholder="e.g., AI prioritization works">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action/Process -->
+                    <div class="insert-category">
+                        <h3>🎬 Action/Process</h3>
+                        <div class="insert-grid">
+                            <div class="insert-item">
+                                <div class="insert-label">Simple Action</div>
+                                <input type="text" class="insert-input" id="simpleAction" placeholder="e.g., one integration">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Reality/Simple/Automatic</div>
+                                <input type="text" class="insert-input" id="realitySimpleAutomatic" placeholder="e.g., automatic">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Seemingly Impossible Thing</div>
+                                <input type="text" class="insert-input" id="seeminglyImpossibleThing" placeholder="e.g., Knowing which deals will close">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Context/Framing -->
+                    <div class="insert-category">
+                        <h3>🖼️ Context/Framing</h3>
+                        <div class="insert-grid">
+                            <div class="insert-item">
+                                <div class="insert-label">Time Period</div>
+                                <input type="text" class="insert-input" id="timePeriod" placeholder="e.g., Every day">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Timeframe</div>
+                                <input type="text" class="insert-input" id="timeframe" placeholder="e.g., 5 minutes">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Industry/Competitors</div>
+                                <input type="text" class="insert-input" id="industryCompetitors" placeholder="e.g., traditional CRMs">
+                            </div>
+                            <div class="insert-item">
+                                <div class="insert-label">Consequence</div>
+                                <input type="text" class="insert-input" id="consequence" placeholder="e.g., 40% of potential revenue">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="generate-button" onclick="generateHeadlines()">✨ Generate Headlines</button>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <!-- Generated Headlines -->
+                <div class="card">
+                    <h2>💡 Generated Headlines</h2>
+                    <p style="font-size: 14px; color: #6b7280; margin-bottom: 20px;">Click a headline to select it for export to the Hero Tool.</p>
+                    <div class="headlines-container" id="headlinesContainer">
+                        <div style="text-align: center; color: #9ca3af; padding: 40px 20px;">
+                            <p>Fill in the inserts above and click "Generate Headlines" to see your options.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="export-section">
+                        <button class="export-button" id="exportButton" onclick="exportToHeroTool()" disabled>🚀 Export to Hero Tool</button>
+                        <a href="hero_brainstorm_interactive.html" class="skip-button">Skip to Hero Tool →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedHeadline = null;
+        
+        // Smart content parsing function
+        function parseContent() {
+            const rawContent = document.getElementById('rawContent').value.toLowerCase();
+            
+            if (!rawContent.trim()) {
+                alert('Please paste some content first!');
+                return;
+            }
+            
+            // Simple keyword-based parsing
+            const patterns = {
+                // Audience patterns
+                specificAudience: /(?:customers are |target |audience of |for )([^.]+?)(?:\s+who|\s+that|,|\.|$)/,
+                audience: /(?:businesses?|companies?|teams?|users?|customers?|clients?|people)/,
+                
+                // Problem patterns
+                problem: /(?:struggle with |problem with |challenge of |issue with )([^.]+?)(?:\.|,|$)/,
+                struggle: /(?:struggle to |struggling with |having trouble |difficulty )([^.]+?)(?:\.|,|$)/,
+                currentLimitation: /(?:limited by |constrained by |restricted by )([^.]+?)(?:\.|,|$)/,
+                
+                // Solution patterns
+                solution: /(?:our |the |we offer |provides? )([^.]+?)(?:helps?|enables?|allows?)/,
+                tool: /(?:platform|tool|system|software|solution|crm|app)/,
+                
+                // Outcome patterns
+                outcome: /(?:resulting in |leads to |achieves? |delivers? )([^.]+?)(?:\.|,|$)/,
+                achieveOutcome: /(?:increase |improve |boost |grow |close |achieve )([^.]+?)(?:\.|,|by|$)/,
+                
+                // Descriptive patterns
+                adjective: /(?:ai-powered|automated|intelligent|smart|advanced|powerful|simple|easy)/
+            };
+            
+            // Auto-fill based on patterns
+            for (const [field, pattern] of Object.entries(patterns)) {
+                const match = rawContent.match(pattern);
+                if (match && match[1]) {
+                    const element = document.getElementById(field);
+                    if (element && !element.value) {
+                        element.value = match[1].trim();
+                    }
+                }
+            }
+            
+            // Provide feedback
+            const button = document.querySelector('.parse-button');
+            button.textContent = '✅ Content Parsed!';
+            button.style.background = 'linear-gradient(135deg, #22c55e 0%, #10b981 100%)';
+            
+            setTimeout(() => {
+                button.textContent = '🤖 Smart Parse Content';
+                button.style.background = 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)';
+            }, 2000);
+        }
+        
+        // Headline generation formulas
+        const headlineFormulas = [
+            {
+                name: "Transformation for Audience",
+                generate: (inserts) => ({
+                    headline: `Transform ${inserts.problem || '[Problem]'} into ${inserts.outcome || '[Outcome]'} for ${inserts.specificAudience || '[Specific Audience]'}`,
+                    subheadline: `${inserts.adjective || '[Adjective]'} ${inserts.solution || '[Solution]'} that ${inserts.whatItDoesDifferently || 'works differently'}`,
+                    body: `Most ${inserts.audience || '[Audience]'} ${inserts.struggle || 'struggle with challenges'}. Our ${inserts.tool || '[Tool]'} changes that by ${inserts.whatItDoesDifferently || 'providing a better way'}.`
+                })
+            },
+            {
+                name: "Solution + Audience",
+                generate: (inserts) => ({
+                    headline: `The ${inserts.adjective || '[Adjective]'} ${inserts.solution || '[Solution]'} for ${inserts.audience || '[Audience]'} who ${inserts.struggle || '[Struggle]'}`,
+                    subheadline: `${inserts.achieveOutcome || '[Achieve Outcome]'} without ${inserts.commonSacrifice || '[Common Sacrifice]'}`,
+                    body: `Stop ${inserts.oldWay || 'doing things the old way'}. Start ${inserts.newWay || 'doing things better'}. Our ${inserts.tool || '[Tool]'} helps you ${inserts.achieveOutcome || 'achieve your goals'}.`
+                })
+            },
+            {
+                name: "Challenge Status Quo",
+                generate: (inserts) => ({
+                    headline: `Finally, ${inserts.solution || '[Solution]'} That ${inserts.solvesGap || '[Solves Gap]'}`,
+                    subheadline: `No more ${inserts.painfulCurrentState || '[Painful Current State]'} - just ${inserts.desiredFutureState || '[Desired Future State]'}`,
+                    body: `Traditional ${inserts.tool || 'tools'} focus on ${inserts.oldWay || 'the wrong things'}. We built something that ${inserts.whatItDoesDifferently || 'actually works'}.`
+                })
+            },
+            {
+                name: "Outcome-Focused",
+                generate: (inserts) => ({
+                    headline: `${inserts.achieveOutcome || '[Achieve Outcome]'} Without ${inserts.commonSacrifice || '[Common Sacrifice]'}`,
+                    subheadline: `${inserts.adjective || '[Adjective]'} ${inserts.solution || '[Solution]'} for ${inserts.specificAudience || '[Specific Audience]'}`,
+                    body: `Why choose between ${inserts.benefitA || 'speed'} and ${inserts.benefitB || 'quality'}? Our ${inserts.tool || '[Tool]'} delivers both.`
+                })
+            },
+            {
+                name: "The Contrast Formula",
+                generate: (inserts) => ({
+                    headline: `Stop ${inserts.oldWay || '[Old Way]'}. Start ${inserts.newWay || '[New Way]'}.`,
+                    subheadline: `${inserts.adjective || '[Adjective]'} ${inserts.solution || '[Solution]'} that actually works`,
+                    body: `${inserts.audience || '[Audience]'} waste time with ${inserts.oldWay || 'outdated methods'}. Smart ones ${inserts.newWay || 'use our approach'} to ${inserts.achieveOutcome || 'get results'}.`
+                })
+            },
+            {
+                name: "The Impossible Made Possible",
+                generate: (inserts) => ({
+                    headline: `${inserts.seeminglyImpossibleThing || '[Seemingly Impossible Thing]'} Is Now ${inserts.realitySimpleAutomatic || '[Reality/Simple/Automatic]'}`,
+                    subheadline: `${inserts.adjective || '[Adjective]'} ${inserts.solution || '[Solution]'} makes the impossible routine`,
+                    body: `What used to take ${inserts.timeframe || 'hours'} now happens ${inserts.realitySimpleAutomatic || 'automatically'}. That's the power of ${inserts.solution || 'our solution'}.`
+                })
+            },
+            {
+                name: "Time-Bound Transformation",
+                generate: (inserts) => ({
+                    headline: `${inserts.achieveOutcome || '[Achieve Outcome]'} in ${inserts.timeframe || '[Timeframe]'} or ${inserts.alternative || '[Alternative]'}`,
+                    subheadline: `${inserts.adjective || '[Adjective]'} ${inserts.solution || '[Solution]'} delivers instant clarity`,
+                    body: `Stop wasting ${inserts.timePeriod || 'time'} on ${inserts.oldWay || 'guesswork'}. Get ${inserts.desiredFutureState || 'answers'} in ${inserts.timeframe || 'minutes'}.`
+                })
+            },
+            {
+                name: "The What-If Question",
+                generate: (inserts) => ({
+                    headline: `What If ${inserts.currentLimitation || '[Current Limitation]'} Was Actually ${inserts.hiddenAdvantage || '[Hidden Advantage]'}?`,
+                    subheadline: `Turn your biggest challenge into your competitive edge`,
+                    body: `Everyone sees ${inserts.currentLimitation || 'limitations'} as problems. We help you see them as ${inserts.hiddenAdvantage || 'opportunities'}.`
+                })
+            },
+            {
+                name: "The Villain Formula",
+                generate: (inserts) => ({
+                    headline: `${inserts.problem || '[Problem]'} Is Costing You ${inserts.consequence || '[Consequence]'}. Here's How to Win.`,
+                    subheadline: `Stop letting ${inserts.problem || 'problems'} drain your ${inserts.consequence || 'resources'}`,
+                    body: `Every day you delay is ${inserts.consequence || 'money lost'}. Our ${inserts.solution || '[Solution]'} stops the bleeding and starts the healing.`
+                })
+            },
+            {
+                name: "The Identity Shift",
+                generate: (inserts) => ({
+                    headline: `Built for ${inserts.aspirationalIdentity || '[Aspirational Identity]'}, Not ${inserts.currentState || '[Current State]'}`,
+                    subheadline: `Finally, ${inserts.tool || 'a tool'} that matches your ambition`,
+                    body: `Most ${inserts.tool || 'tools'} treat you like ${inserts.currentState || 'beginners'}. We built for ${inserts.aspirationalIdentity || 'professionals'} who demand more.`
+                })
+            },
+            {
+                name: "The Metric Revolution",
+                generate: (inserts) => ({
+                    headline: `The Only ${inserts.tool || '[Tool]'} That Measures ${inserts.uncommonMetric || '[Uncommon Metric]'}`,
+                    subheadline: `Because ${inserts.oldWay || 'traditional metrics'} don't predict ${inserts.outcome || '[Outcome]'}`,
+                    body: `While others track ${inserts.oldWay || 'activity'}, we measure ${inserts.uncommonMetric || 'what matters'} - the signals that actually predict ${inserts.outcome || 'success'}.`
+                })
+            },
+            {
+                name: "The And-Not-Or Formula",
+                generate: (inserts) => ({
+                    headline: `${inserts.benefitA || '[Benefit A]'} AND ${inserts.benefitB || '[Benefit B]'}. No Trade-offs.`,
+                    subheadline: `Why settle for one when you can have both?`,
+                    body: `Traditional ${inserts.tool || 'solutions'} make you choose. We eliminated the trade-off. Get ${inserts.benefitA || 'speed'} without sacrificing ${inserts.benefitB || 'quality'}.`
+                })
+            },
+            {
+                name: "The Conspiracy Theory",
+                generate: (inserts) => ({
+                    headline: `Why ${inserts.industryCompetitors || '[Industry/Competitors]'} Don't Want You to Know About ${inserts.solution || '[Solution]'}`,
+                    subheadline: `The truth they've been hiding from ${inserts.audience || '[Audience]'}`,
+                    body: `${inserts.industryCompetitors || 'Legacy providers'} profit from ${inserts.painfulCurrentState || 'complexity'}. We believe in ${inserts.desiredFutureState || 'simplicity'}.`
+                })
+            },
+            {
+                name: "The Before-After Bridge",
+                generate: (inserts) => ({
+                    headline: `From ${inserts.painfulCurrentState || '[Painful Current State]'} to ${inserts.desiredFutureState || '[Desired Future State]'} in ${inserts.simpleAction || '[Simple Action]'}`,
+                    subheadline: `The fastest path to ${inserts.outcome || '[Outcome]'}`,
+                    body: `Skip the ${inserts.painfulCurrentState || 'painful transition'}. Our ${inserts.solution || '[Solution]'} gets you to ${inserts.desiredFutureState || 'where you want to be'} instantly.`
+                })
+            },
+            {
+                name: "The Permission Formula",
+                generate: (inserts) => ({
+                    headline: `You Don't Need ${inserts.commonRequirement || '[Common Requirement]'}. You Need ${inserts.alternative || '[Alternative]'}.`,
+                    subheadline: `Stop chasing the wrong things. Start focusing on what matters.`,
+                    body: `Everyone tells you to get ${inserts.commonRequirement || 'more'}. We help you get ${inserts.alternative || 'better'} instead.`
+                })
+            },
+            {
+                name: "The Confession Formula",
+                generate: (inserts) => ({
+                    headline: `${inserts.uncomfortableTruth || '[Uncomfortable Truth]'} (And How to Fix It)`,
+                    subheadline: `The harsh reality ${inserts.audience || '[Audience]'} face every day`,
+                    body: `Nobody wants to admit it, but ${inserts.uncomfortableTruth || 'there\'s a problem'}. Here's how to finally solve it.`
+                })
+            },
+            {
+                name: "The New Category",
+                generate: (inserts) => ({
+                    headline: `Introducing ${inserts.newCategory || '[New Category]'}: ${inserts.whatItDoesDifferently || '[What It Does Differently]'}`,
+                    subheadline: `The future of ${inserts.tool || '[Tool]'} is here`,
+                    body: `Traditional ${inserts.tool || 'tools'} are limited by old thinking. ${inserts.newCategory || 'Our innovation'} breaks those boundaries.`
+                })
+            },
+            {
+                name: "The Stakes Formula",
+                generate: (inserts) => ({
+                    headline: `${inserts.timePeriod || '[Time Period]'}, You're ${inserts.losingSomething || '[Losing Something]'}. Unless ${inserts.solution || '[Solution]'}.`,
+                    subheadline: `The cost of inaction keeps growing`,
+                    body: `While you wait, competitors use ${inserts.solution || 'our advantage'} to ${inserts.achieveOutcome || 'win'}. Don't get left behind.`
+                })
+            },
+            {
+                name: "The Proof-First Formula",
+                generate: (inserts) => ({
+                    headline: `${inserts.specificDataPoint || '[Specific Data Point]'} Proves ${inserts.claim || '[Claim]'}. Here's How.`,
+                    subheadline: `Data doesn't lie - and neither do results`,
+                    body: `The numbers speak for themselves: ${inserts.specificDataPoint || 'our results'}. Now let us show you how to achieve them.`
+                })
+            },
+            {
+                name: "The Two-Path Formula",
+                generate: (inserts) => ({
+                    headline: `Two Types of ${inserts.audience || '[Audience]'}: Those Who ${inserts.succeed || '[Succeed]'} and Those Who ${inserts.struggle2 || '[Struggle]'}`,
+                    subheadline: `Which path will you choose?`,
+                    body: `The winners ${inserts.succeed || 'use data'}. The rest ${inserts.struggle2 || 'guess'}. Our ${inserts.tool || '[Tool]'} puts you on the winning path.`
+                })
+            }
+        ];
+        
+        // Generate headlines using all formulas
+        function generateHeadlines() {
+            const inserts = {};
+            const inputs = document.querySelectorAll('.insert-input');
+            
+            inputs.forEach(input => {
+                inserts[input.id] = input.value || '';
+            });
+            
+            const container = document.getElementById('headlinesContainer');
+            container.innerHTML = '';
+            
+            headlineFormulas.forEach((formula, index) => {
+                const generated = formula.generate(inserts);
+                const item = document.createElement('div');
+                item.className = 'headline-item';
+                item.onclick = () => selectHeadline(item, generated);
+                
+                item.innerHTML = `
+                    <div class="formula-name">${formula.name}</div>
+                    <div class="headline-text">${generated.headline}</div>
+                    <div class="subheadline-text">${generated.subheadline}</div>
+                    <div class="body-text">${generated.body}</div>
+                `;
+                
+                container.appendChild(item);
+            });
+        }
+        
+        // Select headline for export
+        function selectHeadline(element, content) {
+            // Remove previous selection
+            document.querySelectorAll('.headline-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Select current item
+            element.classList.add('selected');
+            selectedHeadline = content;
+            
+            // Enable export button
+            document.getElementById('exportButton').disabled = false;
+        }
+        
+        // Export selected headline to Hero Tool
+        function exportToHeroTool() {
+            if (!selectedHeadline) {
+                alert('Please select a headline first!');
+                return;
+            }
+            
+            // Create URL parameters
+            const params = new URLSearchParams({
+                eyebrow: 'INTRODUCING',
+                heading: selectedHeadline.headline,
+                subheading: selectedHeadline.subheadline,
+                body: selectedHeadline.body,
+                'primary-cta': 'Get Started',
+                'nav-two': 'Features',
+                'nav-three': 'Pricing',
+                'nav-four': 'About',
+                'nav-five': 'Contact',
+                'header-cta': 'Get Started'
+            });
+            
+            // Navigate to Hero Tool with data
+            window.location.href = `hero_brainstorm_interactive.html?${params.toString()}`;
+        }
+    </script>
+</body>
+</html>
