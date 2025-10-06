@@ -1,11 +1,13 @@
 # Hero Brainstorming Tools 🧠✨
 
-A comprehensive 2-part collaborative system for creating and testing hero section messaging. Perfect for marketing teams, copywriters, and designers.
+A comprehensive collaborative system for creating and testing hero section messaging. Perfect for marketing teams, copywriters, and designers.
 
 ## 🚀 Live Tools
 
 - **[Part 1: Brainstorm Canvas](brainstorm_canvas.html)** - Strategic ideation and headline generation
-- **[Part 2: Hero Tool](hero_brainstorm_interactive.html)** - Visual testing across typography styles
+- **[Part 2: Hero Tool](hero_brainstorm_interactive.html)** - Light theme testing across typography styles
+- **[Part 3: The Lab](lab_hero_tool.html)** - Dark theme testing with TOC navigation
+- **[📚 Style Guide Hub](style_guide_hub.html)** - Interactive style guide with live samples and exports
 
 ## 📋 Overview
 
