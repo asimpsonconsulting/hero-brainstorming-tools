@@ -55,7 +55,7 @@
         
         .tools {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             margin-bottom: 30px;
         }
@@ -151,13 +151,19 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        @media (max-width: 900px) and (min-width: 769px) {
+            .tools {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="logo">🧠✨</div>
         <h1>Hero Brainstorming Tools</h1>
-        <p class="subtitle">Transform your ideas into powerful hero sections with our 2-part collaborative system</p>
+        <p class="subtitle">Transform your ideas into powerful hero sections with our complete 3-part collaborative system</p>
         
         <div class="tools">
             <a href="brainstorm_canvas.html" class="tool-card">
@@ -167,7 +173,12 @@
             
             <a href="hero_brainstorm_interactive.html" class="tool-card">
                 <h2>Part 2: Hero Tool</h2>
-                <p>Test messaging across 3 typography styles and export screenshots</p>
+                <p>Test messaging across 3 light typography styles and export screenshots</p>
+            </a>
+            
+            <a href="lab_hero_tool.html" class="tool-card" style="background: linear-gradient(135deg, #1f2937 0%, #374151 100%);">
+                <h2>Part 3: The Lab</h2>
+                <p>Dark theme testing with TOC navigation across all 3 typography styles</p>
             </a>
         </div>
         
@@ -176,19 +187,19 @@
             <div class="workflow-steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <div class="step-text">Start with strategy in Part 1</div>
+                    <div class="step-text">Strategy & headlines in Part 1</div>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <div class="step-text">Generate headline variations</div>
+                    <div class="step-text">Light theme testing in Part 2</div>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <div class="step-text">Export to Part 2 for testing</div>
+                    <div class="step-text">Dark theme testing in Part 3</div>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
-                    <div class="step-text">Save screenshots for review</div>
+                    <div class="step-text">Export screenshots & compare</div>
                 </div>
             </div>
         </div>

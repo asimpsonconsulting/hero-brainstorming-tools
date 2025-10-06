@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Section Interactive Brainstorming Tool - PREVIEW</title>
-    <!-- PREVIEW: Testing navigation eyebrows feature -->
+    <title>The Lab - Dark Theme Hero Testing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -55,6 +54,7 @@
             gap: 30px;
             align-items: start;
         }
+        
         
         .form-panel {
             background: white;
@@ -363,6 +363,176 @@
             font-weight: 500;
         }
         
+        /* Dark Lab Theme */
+        .dark-lab {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        .dark-lab .navigation {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-lab .nav-link {
+            color: #ffffff;
+        }
+        
+        .dark-lab .nav-link:hover {
+            color: #f97316;
+        }
+        
+        .dark-lab .nav-link.active {
+            color: #f97316;
+        }
+        
+        .dark-lab .nav-eyebrow {
+            color: #9ca3af;
+        }
+        
+        .dark-lab .nav-cta {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+        }
+        
+        .dark-lab .hero-section {
+            background: transparent;
+        }
+        
+        .dark-lab .eyebrow {
+            color: #f97316;
+        }
+        
+        .dark-lab .headline {
+            background: linear-gradient(135deg, #ffffff 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dark-lab .subheadline {
+            color: #e5e7eb;
+        }
+        
+        .dark-lab .body-copy {
+            color: #d1d5db;
+        }
+        
+        .dark-lab .proof {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e5e7eb;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-lab .cta-button {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+        }
+        
+        .dark-lab .hero-image {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-lab .specs {
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-lab .specs h3 {
+            color: #e5e7eb;
+        }
+        
+        .dark-lab .spec-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: #f97316;
+        }
+        
+        .dark-lab .spec-label {
+            color: #ffffff;
+        }
+        
+        .dark-lab .spec-value {
+            color: #d1d5db;
+        }
+        
+        /* Hero Layout with TOC */
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 30px;
+            align-items: start;
+            margin-bottom: 40px;
+        }
+        
+        .hero-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-toc {
+            padding: 10px 0;
+        }
+        
+        
+        .dark-lab .hero-toc .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .dark-lab .hero-toc .toc-item {
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            font-size: 12px;
+            color: #e5e7eb;
+            border-left: 3px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .dark-lab .hero-toc .toc-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: #f97316;
+        }
+        
+        .dark-lab .hero-toc .toc-item.active {
+            background: rgba(249, 115, 22, 0.2);
+            border-left-color: #f97316;
+            color: #f97316;
+            font-weight: 600;
+        }
+        
+        
+        @media (max-width: 900px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .hero-toc {
+                order: -1;
+                width: 100%;
+            }
+            
+            .hero-toc .toc-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: center;
+            }
+            
+            .hero-toc .toc-item {
+                margin-bottom: 0;
+                flex: 0 0 auto;
+            }
+        }
+        
         /* Version 2: Bold & Minimal */
         .version-2 .eyebrow {
             font-size: 14px;
@@ -642,16 +812,37 @@
 <body>
     <div class="container">
         <div class="guide-header">
-            <h1>Hero Section Interactive Brainstorming Tool</h1>
-            <p>Experiment with different text combinations and see them applied to all 3 typography styles instantly | Perfect for team collaboration and A/B testing</p>
-            <div style="margin-top: 15px;">
-                <a href="brainstorm_canvas.html" style="display: inline-block; padding: 8px 16px; background: #f3f4f6; color: #6b7280; text-decoration: none; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #e5e7eb; transition: all 0.3s;">← Start with Brainstorm Canvas</a>
+            <h1>🧪 The Lab - Dark Theme Hero Testing</h1>
+            <p>Test your hero sections with dark backgrounds and navigation structures | Advanced testing for modern interfaces</p>
+            <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <a href="brainstorm_canvas.html" style="display: inline-block; padding: 8px 16px; background: #f3f4f6; color: #6b7280; text-decoration: none; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #e5e7eb; transition: all 0.3s;">← Part 1: Brainstorm</a>
+                <a href="hero_brainstorm_interactive.html" style="display: inline-block; padding: 8px 16px; background: #f3f4f6; color: #6b7280; text-decoration: none; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #e5e7eb; transition: all 0.3s;">← Part 2: Light Theme</a>
             </div>
         </div>
         
         <div class="main-layout">
             <!-- Form Panel -->
             <div class="form-panel">
+                <div style="border-bottom: 1px solid #e5e7eb; padding-bottom: 20px; margin-bottom: 25px;">
+                    <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">🌙 Dark Lab Settings</h3>
+                    
+                    <div class="form-group">
+                        <label>Dark Background</label>
+                        <select id="dark-background" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 6px; font-size: 14px;">
+                            <option value="#000000">Solid Black</option>
+                            <option value="#1a1a1a" selected>Dark Grey</option>
+                            <option value="#2d2d2d">Charcoal</option>
+                            <option value="#1e1e2e">Dark Blue</option>
+                            <option value="custom">Custom Color</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="custom-color-group" style="display: none;">
+                        <label>Custom Background Color</label>
+                        <input type="color" id="custom-dark-color" value="#1a1a1a" style="width: 100%; height: 45px; padding: 5px; border: 2px solid #e5e7eb; border-radius: 6px;">
+                    </div>
+                </div>
+                
                 <h2>📝 Fill in the Blanks</h2>
                 
                 <div class="form-group">
@@ -720,20 +911,62 @@
                     <input type="text" id="primary-cta" placeholder="e.g., Start Free Trial" value="Start Your Free Trial">
                 </div>
                 
+                <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
+                    <div class="form-group">
+                        <label>TOC Item 1</label>
+                        <input type="text" id="toc-1" placeholder="Leave blank to hide" value="Strategy">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TOC Item 2</label>
+                        <input type="text" id="toc-2" placeholder="Leave blank to hide" value="Positioning">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TOC Item 3</label>
+                        <input type="text" id="toc-3" placeholder="Leave blank to hide" value="Stability">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TOC Item 4</label>
+                        <input type="text" id="toc-4" placeholder="Leave blank to hide" value="Sequences">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TOC Item 5</label>
+                        <input type="text" id="toc-5" placeholder="Leave blank to hide" value="Analytics">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TOC Item 6</label>
+                        <input type="text" id="toc-6" placeholder="Leave blank to hide" value="Personas">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TOC Item 7</label>
+                        <input type="text" id="toc-7" placeholder="Leave blank to hide" value="Coaching">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TOC Item 8</label>
+                        <input type="text" id="toc-8" placeholder="Leave blank to hide" value="">
+                    </div>
+                </div>
+                
                 <button class="update-btn" onclick="updateAllVersions()">✨ Update All Versions</button>
                 
                 <button class="download-btn" onclick="downloadScreenshot()">📸 Save Screenshot</button>
                 
                 <div class="business-impact">
-                    <strong>Why this matters:</strong> This tool helps your team quickly test different messaging approaches across proven design patterns, reducing design review cycles and enabling data-driven copy decisions. Perfect for A/B testing headline variations without requiring developer time.
+                    <strong>Why The Lab matters:</strong> Dark themes are everywhere - apps, dashboards, gaming, crypto, and modern SaaS. Test your hero messaging on dark backgrounds to ensure readability, brand consistency, and conversion optimization across all interface themes.
                 </div>
             </div>
             
             <!-- Examples Panel -->
             <div class="examples">
-                <!-- Version 1: Modern SaaS -->
-                <div class="example version-1">
-                    <div class="example-label">Version 1: Modern SaaS Style</div>
+                <!-- Version 1: Dark Lab -->
+                <div class="example version-1 dark-lab">
+                    <div class="example-label">Version 1: Dark Lab (with TOC)</div>
                     <div class="navigation">
                         <div class="logo">
                             <img src="https://interfaces-cdn.zapier.com/3bd0bacb-6f98-41e7-98c7-0e6fae14b251/1vLABShorizontal09.png" alt="OneViewLabs Logo" />
@@ -766,13 +999,27 @@
                         </div>
                     </div>
                     <div class="hero-section">
-                        <div class="eyebrow" data-field="eyebrow">INTRODUCING</div>
-                        <h1 class="headline" data-field="heading">Revolutionary Analytics Platform</h1>
-                        <div class="subheadline" data-field="subheading">Get deeper insights faster than ever before</div>
-                        <p class="body-copy" data-field="body">Transform raw data into actionable business insights with our AI-powered analytics platform. Make better decisions faster with real-time visualizations and predictive modeling.</p>
-                        <div class="proof">SentinelOne • Matillion • Thought • INTAPP • Nektar</div>
-                        <button class="cta-button" data-field="primary-cta">Start Your Free Trial</button>
-                        <div class="hero-image">Solution Visualization</div>
+                        <div class="hero-layout">
+                            <div class="hero-toc">
+                                <ul class="toc-list" id="tocList">
+                                    <li class="toc-item active" data-field="toc-1">Strategy</li>
+                                    <li class="toc-item" data-field="toc-2">Positioning</li>
+                                    <li class="toc-item" data-field="toc-3">Stability</li>
+                                    <li class="toc-item" data-field="toc-4">Sequences</li>
+                                    <li class="toc-item" data-field="toc-5">Analytics</li>
+                                    <li class="toc-item" data-field="toc-6">Personas</li>
+                                    <li class="toc-item" data-field="toc-7">Coaching</li>
+                                </ul>
+                            </div>
+                            <div class="hero-main">
+                                <div class="eyebrow" data-field="eyebrow">INTRODUCING</div>
+                                <h1 class="headline" data-field="heading">Revolutionary Analytics Platform</h1>
+                                <div class="subheadline" data-field="subheading">Get deeper insights faster than ever before</div>
+                                <p class="body-copy" data-field="body">Transform raw data into actionable business insights with our AI-powered analytics platform. Make better decisions faster with real-time visualizations and predictive modeling.</p>
+                                <button class="cta-button" data-field="primary-cta">Start Your Free Trial</button>
+                                <div class="hero-image">Solution Visualization</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="specs">
                         <h3>Typography Specifications</h3>
@@ -794,10 +1041,6 @@
                                 <div class="spec-value">18px, 1.6 line-height, gray-500</div>
                             </div>
                             <div class="spec-item">
-                                <div class="spec-label">Proof</div>
-                                <div class="spec-value">16px, 600 weight, green-500</div>
-                            </div>
-                            <div class="spec-item">
                                 <div class="spec-label">CTA Button</div>
                                 <div class="spec-value">18px, 600 weight, orange-red gradient</div>
                             </div>
@@ -806,8 +1049,8 @@
                 </div>
                 
                 <!-- Version 2: Bold & Minimal -->
-                <div class="example version-2">
-                    <div class="example-label">Version 2: Bold & Minimal</div>
+                <div class="example version-2 dark-lab">
+                    <div class="example-label">Version 2: Bold & Minimal (Dark)</div>
                     <div class="navigation">
                         <div class="logo">
                             <img src="https://interfaces-cdn.zapier.com/3bd0bacb-6f98-41e7-98c7-0e6fae14b251/1vLABShorizontal09.png" alt="OneViewLabs Logo" />
@@ -844,7 +1087,6 @@
                         <h1 class="headline" data-field="heading">Revolutionary Analytics Platform</h1>
                         <div class="subheadline" data-field="subheading">Get deeper insights faster than ever before</div>
                         <p class="body-copy" data-field="body">Transform raw data into actionable business insights with our AI-powered analytics platform. Make better decisions faster with real-time visualizations and predictive modeling.</p>
-                        <div class="proof">SentinelOne • Matillion • Thought • INTAPP • Nektar</div>
                         <button class="cta-button" data-field="primary-cta">Start Your Free Trial</button>
                         <div class="hero-image">Solution Visualization</div>
                     </div>
@@ -868,10 +1110,6 @@
                                 <div class="spec-value">20px, 1.7 line-height, gray-500</div>
                             </div>
                             <div class="spec-item">
-                                <div class="spec-label">Proof</div>
-                                <div class="spec-value">18px, 700 weight, gradient borders</div>
-                            </div>
-                            <div class="spec-item">
                                 <div class="spec-label">CTA Button</div>
                                 <div class="spec-value">20px, 700 weight, orange-pink gradient</div>
                             </div>
@@ -880,8 +1118,8 @@
                 </div>
                 
                 <!-- Version 3: Clean & Professional -->
-                <div class="example version-3">
-                    <div class="example-label">Version 3: Clean & Professional</div>
+                <div class="example version-3 dark-lab">
+                    <div class="example-label">Version 3: Clean & Professional (Dark)</div>
                     <div class="navigation">
                         <div class="logo">
                             <img src="https://interfaces-cdn.zapier.com/3bd0bacb-6f98-41e7-98c7-0e6fae14b251/1vLABShorizontal09.png" alt="OneViewLabs Logo" />
@@ -918,7 +1156,6 @@
                         <h1 class="headline" data-field="heading">Revolutionary Analytics Platform</h1>
                         <div class="subheadline" data-field="subheading">Get deeper insights faster than ever before</div>
                         <p class="body-copy" data-field="body">Transform raw data into actionable business insights with our AI-powered analytics platform. Make better decisions faster with real-time visualizations and predictive modeling.</p>
-                        <div class="proof">SentinelOne • Matillion • Thought • INTAPP • Nektar</div>
                         <button class="cta-button" data-field="primary-cta">Start Your Free Trial</button>
                         <div class="hero-image">Solution Visualization</div>
                     </div>
@@ -942,11 +1179,6 @@
                                 <div class="spec-value">17px, 1.65 line-height, gray-500</div>
                             </div>
                             <div class="spec-item">
-                                <div class="spec-label">Proof</div>
-                                <div class="spec-value">15px, 600 weight, green highlight</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-item">
                                 <div class="spec-label">CTA Button</div>
                                 <div class="spec-value">17px, 600 weight, blue-cyan gradient</div>
                             </div>
@@ -975,7 +1207,15 @@
                 'heading': document.getElementById('heading').value,
                 'subheading': document.getElementById('subheading').value,
                 'body': document.getElementById('body').value,
-                'primary-cta': document.getElementById('primary-cta').value
+                'primary-cta': document.getElementById('primary-cta').value,
+                'toc-1': document.getElementById('toc-1').value,
+                'toc-2': document.getElementById('toc-2').value,
+                'toc-3': document.getElementById('toc-3').value,
+                'toc-4': document.getElementById('toc-4').value,
+                'toc-5': document.getElementById('toc-5').value,
+                'toc-6': document.getElementById('toc-6').value,
+                'toc-7': document.getElementById('toc-7').value,
+                'toc-8': document.getElementById('toc-8').value
             };
             
             // Update all elements with data-field attributes
@@ -999,6 +1239,20 @@
                         } else {
                             navItem.classList.remove('hidden');
                         }
+                    }
+                });
+            });
+            
+            // Handle TOC item visibility (hide if blank)
+            [1, 2, 3, 4, 5, 6, 7, 8].forEach(num => {
+                const tocValue = formData[`toc-${num}`] || '';
+                const tocItems = document.querySelectorAll(`[data-field="toc-${num}"]`);
+                
+                tocItems.forEach(tocItem => {
+                    if (!tocValue.trim()) {
+                        tocItem.style.display = 'none';
+                    } else {
+                        tocItem.style.display = 'block';
                     }
                 });
             });
@@ -1097,10 +1351,43 @@
             }
         }
         
-        // Initialize with default values and check for URL params
+        // TOC click handler
+        function selectTocItem(item) {
+            document.querySelectorAll('.toc-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+        }
+        
+        // Dark background management
+        function updateDarkBackground() {
+            const selector = document.getElementById('dark-background');
+            const customGroup = document.getElementById('custom-color-group');
+            const darkLab = document.querySelector('.dark-lab');
+            
+            if (selector.value === 'custom') {
+                customGroup.style.display = 'block';
+                const customColor = document.getElementById('custom-dark-color').value;
+                darkLab.style.background = customColor;
+            } else {
+                customGroup.style.display = 'none';
+                darkLab.style.background = selector.value;
+            }
+        }
+        
+        // Add event listeners for dark theme
         document.addEventListener('DOMContentLoaded', () => {
+            const darkSelector = document.getElementById('dark-background');
+            const customColorPicker = document.getElementById('custom-dark-color');
+            
+            darkSelector.addEventListener('change', updateDarkBackground);
+            customColorPicker.addEventListener('input', updateDarkBackground);
+            
+            // Initialize TOC click handlers
+            document.querySelectorAll('.toc-item').forEach(item => {
+                item.onclick = () => selectTocItem(item);
+            });
             loadFromURLParams();
             updateAllVersions();
+            updateDarkBackground();
         });
     </script>
 </body>

@@ -75,6 +75,7 @@
             background: #f3f4f6;
             color: #6b7280;
             border: 2px solid #e5e7eb;
+            text-decoration: none;
         }
         
         .nav-button.next:hover {
@@ -360,10 +361,11 @@
         <div class="header">
             <h1>🧠 Hero Brainstorm Canvas</h1>
             <p>Transform your raw ideas into powerful hero section content</p>
-            <div class="workflow-nav">
-                <div class="nav-button current">Part 1: Brainstorm Canvas</div>
-                <div class="nav-button next">Part 2: Hero Tool</div>
-            </div>
+        <div class="workflow-nav">
+            <div class="nav-button current">Part 1: Brainstorm Canvas</div>
+            <a href="hero_brainstorm_interactive.html" class="nav-button next">Part 2: Hero Tool</a>
+            <a href="lab_hero_tool.html" class="nav-button next">Part 3: The Lab</a>
+        </div>
         </div>
         
         <div class="main-layout">
@@ -618,7 +620,6 @@ Example: 'Our customers are small business owners who struggle with managing lea
                     
                     <div class="export-section">
                         <button class="export-button" id="exportButton" onclick="exportToHeroTool()" disabled>🚀 Export to Hero Tool</button>
-                        <a href="hero_brainstorm_interactive.html" class="skip-button">Skip to Hero Tool →</a>
                     </div>
                 </div>
             </div>
