@@ -104,9 +104,11 @@
         }
         
         .workflow-steps {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .step {
@@ -148,7 +150,7 @@
             }
             
             .workflow-steps {
-                grid-template-columns: 1fr;
+                max-width: 100%;
             }
         }
         
@@ -192,19 +194,19 @@
             <div class="workflow-steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <div class="step-text">Strategy & headlines in Part 1</div>
+                    <div class="step-text">Strategy & headlines in Part 1: Brainstorm Canvas</div>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <div class="step-text">Light theme testing in Part 2</div>
+                    <div class="step-text">Light theme testing in Part 2: Hero Tool</div>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <div class="step-text">Dark theme testing in Part 3</div>
+                    <div class="step-text">Dark theme testing in Part 3: The Lab</div>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
-                    <div class="step-text">Export screenshots & compare</div>
+                    <div class="step-text">Reference Style Guide Hub & export assets</div>
                 </div>
             </div>
         </div>
