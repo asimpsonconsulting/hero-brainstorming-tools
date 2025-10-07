@@ -89,7 +89,7 @@
         .marketing-icon { background: linear-gradient(135deg, #f97316 0%, #ef4444 100%); }
         .sales-icon { background: linear-gradient(135deg, #22c55e 0%, #10b981 100%); }
         .dev-icon { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); }
-        .ops-icon { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); }
+        .ops-icon { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); }
         .shared-icon { background: linear-gradient(135deg, #6b7280 0%, #374151 100%); }
         
         .department-title {
@@ -156,8 +156,8 @@
         .tool-card.dev { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
         .tool-card.dev:hover { box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4); }
         
-        .tool-card.ops { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3); }
-        .tool-card.ops:hover { box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4); }
+        .tool-card.ops { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+        .tool-card.ops:hover { box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4); }
         
         .tool-card.shared { background: linear-gradient(135deg, #6b7280 0%, #374151 100%); box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3); }
         .tool-card.shared:hover { box-shadow: 0 8px 20px rgba(107, 114, 128, 0.4); }
@@ -245,6 +245,27 @@
         <p class="subtitle">Complete suite of tools, prompts, and processes for Marketing, Sales, Development, and Operations teams</p>
         
         <div class="departments">
+            <!-- Shared Resources -->
+            <div class="department-section">
+                <div class="department-header">
+                    <div class="dept-icon shared-icon">📚</div>
+                    <div>
+                        <div class="department-title">Shared Resources</div>
+                        <div class="department-desc">Brand standards, style guides, and resources used across all departments</div>
+                    </div>
+                </div>
+                <div class="tools-grid">
+                    <a href="style_guide_hub.html" class="tool-card shared">
+                        <h3>Interactive Style Guide</h3>
+                        <p>Live typography samples, color swatches, AI prompts, and design exports</p>
+                    </a>
+                    <div class="tool-card placeholder">
+                        <h3>Future Shared Resource</h3>
+                        <p>Additional shared resources and templates coming soon</p>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Marketing Department -->
             <div class="department-section">
                 <div class="department-header">
@@ -299,27 +320,6 @@
                 </div>
             </div>
             
-            <!-- Development Department -->
-            <div class="department-section">
-                <div class="department-header">
-                    <div class="dept-icon dev-icon">🔧</div>
-                    <div>
-                        <div class="department-title">Development Tools</div>
-                        <div class="department-desc">Code standards, component libraries, technical specifications, and dev workflows</div>
-                    </div>
-                </div>
-                <div class="tools-grid">
-                    <div class="tool-card placeholder">
-                        <h3>Future Development Tool</h3>
-                        <p>Developer tools and processes coming soon</p>
-                    </div>
-                    <div class="tool-card placeholder">
-                        <h3>Future Development Tool</h3>
-                        <p>Developer tools and processes coming soon</p>
-                    </div>
-                </div>
-            </div>
-            
             <!-- Operations Department -->
             <div class="department-section">
                 <div class="department-header">
@@ -341,23 +341,19 @@
                 </div>
             </div>
             
-            <!-- Shared Resources -->
-            <div class="department-section">
+            <!-- Development Department -->
+            <div class="department-section" style="opacity: 0.7;">
                 <div class="department-header">
-                    <div class="dept-icon shared-icon">📚</div>
+                    <div class="dept-icon dev-icon">🔧</div>
                     <div>
-                        <div class="department-title">Shared Resources</div>
-                        <div class="department-desc">Brand standards, style guides, and resources used across all departments</div>
+                        <div class="department-title">Development Tools</div>
+                        <div class="department-desc">Technical specifications and dev workflows (may use external tools)</div>
                     </div>
                 </div>
                 <div class="tools-grid">
-                    <a href="style_guide_hub.html" class="tool-card shared">
-                        <h3>Interactive Style Guide</h3>
-                        <p>Live typography samples, color swatches, AI prompts, and design exports</p>
-                    </a>
                     <div class="tool-card placeholder">
-                        <h3>Future Shared Resource</h3>
-                        <p>Additional shared resources and templates coming soon</p>
+                        <h3>Future Development Tool</h3>
+                        <p>Developer tools and processes coming soon</p>
                     </div>
                 </div>
             </div>
