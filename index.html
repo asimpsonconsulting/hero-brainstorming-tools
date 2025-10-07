@@ -55,8 +55,8 @@
         
         .departments {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
             margin-bottom: 30px;
         }
         
@@ -211,6 +211,13 @@
             color: #374151;
         }
         
+        @media (max-width: 1024px) {
+            .departments {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 30px 20px;
@@ -220,10 +227,6 @@
                 font-size: 24px;
             }
             
-            .departments {
-                gap: 20px;
-            }
-            
             .department-section {
                 padding: 20px;
             }
@@ -231,16 +234,14 @@
             .tools-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .workflow-steps {
-                max-width: 100%;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">🎯✨</div>
+        <div class="logo">
+            <img src="https://interfaces-cdn.zapier.com/3bd0bacb-6f98-41e7-98c7-0e6fae14b251/1vLABShorizontal09.png" alt="OneViewLabs Logo" style="height: 48px; margin-bottom: 20px;" />
+        </div>
         <h1>OneView ToolKit</h1>
         <p class="subtitle">Complete suite of tools, prompts, and processes for Marketing, Sales, Development, and Operations teams</p>
         
@@ -355,28 +356,6 @@
                         <h3>Future Development Tool</h3>
                         <p>Developer tools and processes coming soon</p>
                     </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="workflow">
-            <h3>🚀 Getting Started</h3>
-            <div class="workflow-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-text">Choose your department section above</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-text">Select the tool that matches your current need</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-text">Use the Shared Resources for brand consistency</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-text">Export and share results with your team</div>
                 </div>
             </div>
         </div>
