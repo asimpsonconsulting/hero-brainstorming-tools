@@ -183,14 +183,17 @@
         .form-preview {
             background: white;
             border-radius: 16px;
-            padding: 40px;
+            padding: 0;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             margin-bottom: 30px;
+            overflow: hidden;
         }
         
         .form-container {
             max-width: 500px;
             margin: 0 auto;
+            background: white;
+            padding: 40px;
         }
         
         .variation-label {
@@ -441,6 +444,24 @@
                 </div>
                 
                 <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
+                    <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">📋 Additional Fields</h3>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="include-phone" style="margin-right: 8px;">
+                            Include Phone Number field
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="include-title" style="margin-right: 8px;">
+                            Include Job Title field
+                        </label>
+                    </div>
+                </div>
+                
+                <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
                     <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">❓ Qualifying Questions</h3>
                     
                     <div class="form-group">
@@ -467,7 +488,7 @@ Other</textarea>
                 <button class="download-btn" onclick="downloadCompletePackage()">📦 Download Complete Package</button>
                 
                 <div class="business-impact">
-                    <strong>Why this matters:</strong> Form optimization can increase lead conversion by 25-40%. Test different headlines, field combinations, accent colors, and layouts to find what converts best. Complete package includes: form preview, configuration files, HTML samples, and Salesforce setup instructions.
+                    <strong>Why this matters:</strong> Form optimization can increase lead conversion by 25-40%. Test different headlines, field combinations, accent colors, and layouts to find what converts best. Download includes form screenshot and complete configuration data.
                 </div>
             </div>
             
@@ -506,6 +527,22 @@ Other</textarea>
                                 <div class="field-group">
                                     <label class="field-label">Company *</label>
                                     <input type="text" class="field-input" placeholder="Acme Corp" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Optional Phone Field -->
+                            <div class="form-row" id="phone-field" style="display: none;">
+                                <div class="field-group">
+                                    <label class="field-label">Phone Number</label>
+                                    <input type="tel" class="field-input" placeholder="(555) 123-4567">
+                                </div>
+                            </div>
+                            
+                            <!-- Optional Title Field -->
+                            <div class="form-row" id="title-field" style="display: none;">
+                                <div class="field-group">
+                                    <label class="field-label">Job Title</label>
+                                    <input type="text" class="field-input" placeholder="VP of Sales">
                                 </div>
                             </div>
                             
@@ -588,6 +625,16 @@ Other</textarea>
                 }
             });
             
+            // Handle additional fields
+            const includePhone = document.getElementById('include-phone').checked;
+            const includeTitle = document.getElementById('include-title').checked;
+            
+            const phoneField = document.getElementById('phone-field');
+            const titleField = document.getElementById('title-field');
+            
+            if (phoneField) phoneField.style.display = includePhone ? 'block' : 'none';
+            if (titleField) titleField.style.display = includeTitle ? 'block' : 'none';
+            
             // Handle qualifying questions
             const question1 = document.getElementById('question-1').value;
             if (question1.trim()) {
@@ -622,7 +669,7 @@ Other</textarea>
             }
         }
         
-        // Download complete package with HTML samples
+        // Download simplified package (PNG + JSON only)
         async function downloadCompletePackage() {
             const button = document.querySelector('.download-btn');
             button.textContent = '📦 Creating Package...';
@@ -631,12 +678,12 @@ Other</textarea>
             try {
                 const date = new Date().toISOString().slice(0, 10);
                 
-                // 1. Screenshot
+                // 1. Download Screenshot
                 const formPreview = document.querySelector('.form-variations');
                 const canvas = await html2canvas(formPreview, {
                     scale: 1,
                     useCORS: true,
-                    backgroundColor: '#f9fafb'
+                    backgroundColor: 'white'
                 });
                 
                 const screenshotLink = document.createElement('a');
@@ -646,8 +693,7 @@ Other</textarea>
                 screenshotLink.click();
                 document.body.removeChild(screenshotLink);
                 
-                // 2. Configuration JSON
-                const selectedFields = Array.from(document.getElementById('required-fields').selectedOptions).map(option => option.value);
+                // 2. Download Configuration JSON
                 const formConfig = {
                     eyebrow: document.getElementById('form-eyebrow').value,
                     headline: document.getElementById('form-headline').value,
@@ -661,7 +707,8 @@ Other</textarea>
                     contactEmail: document.getElementById('contact-email').value,
                     question1: document.getElementById('question-1').value,
                     question1Options: document.getElementById('question-1-options').value,
-                    selectedFields: selectedFields,
+                    includePhone: document.getElementById('include-phone').checked,
+                    includeTitle: document.getElementById('include-title').checked,
                     generatedDate: date,
                     davidBresearsSetup: true,
                     teamNotifications: ['David Bresears', 'Sean Lee', 'Remington Rawlings']
@@ -677,51 +724,14 @@ Other</textarea>
                 document.body.removeChild(configLink);
                 URL.revokeObjectURL(configUrl);
                 
-                // 3. Salesforce Setup Instructions
-                const instructions = '# OneView Web-to-Lead Form - Complete Implementation Package\\n\\n' +
-                    '## Form Configuration Summary\\n' +
-                    '- Generated: ' + date + ' from OneView ToolKit\\n' +
-                    '- Headline: ' + formConfig.headline + '\\n' +
-                    '- Eyebrow: ' + formConfig.eyebrow + '\\n' +
-                    '- Submit Button: ' + formConfig.submitText + '\\n' +
-                    '- Accent Color: ' + formConfig.accentColor + ' (OneView brand colors)\\n' +
-                    '- Selected Fields: ' + selectedFields.join(', ') + '\\n' +
-                    (formConfig.question1 ? '- Qualifying Question: ' + formConfig.question1 + '\\n' : '') +
-                    '\\n## Salesforce Setup (David Bresears Configuration)\\n' +
-                    '- Lead Owner: David Bresears\\n' +
-                    '- Team Notifications: David Bresears, Sean Lee, Remington Rawlings\\n' +
-                    '- Lead Source: Website Contact Form\\n' +
-                    '- Daily Volume: Within 500/day Salesforce limit\\n\\n' +
-                    '## Implementation Steps\\n' +
-                    '1. Use the JSON configuration to build production HTML\\n' +
-                    '2. Replace YOUR_SFDC_ORG_ID_HERE with actual Salesforce Org ID\\n' +
-                    '3. Create custom fields for selected optional fields\\n' +
-                    '4. Set up David Bresears lead assignment rule\\n' +
-                    '5. Configure team email notifications\\n' +
-                    '6. Test complete form flow\\n' +
-                    '7. Deploy to production\\n\\n' +
-                    '## HTML Sample Available\\n' +
-                    'Check the OneView ToolKit workspace for sample HTML files based on this configuration.\\n\\n' +
-                    'For technical implementation support, contact the OneView development team.';
-                
-                const instructionsBlob = new Blob([instructions], { type: 'text/markdown' });
-                const instructionsUrl = URL.createObjectURL(instructionsBlob);
-                const instructionsLink = document.createElement('a');
-                instructionsLink.download = 'salesforce-setup-' + date + '.md';
-                instructionsLink.href = instructionsUrl;
-                document.body.appendChild(instructionsLink);
-                instructionsLink.click();
-                document.body.removeChild(instructionsLink);
-                URL.revokeObjectURL(instructionsUrl);
-                
-                button.textContent = '✅ Complete Package Downloaded! (3 files + HTML samples)';
+                button.textContent = '✅ Package Downloaded! (2 files)';
                 button.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
                 
                 setTimeout(() => {
                     button.textContent = '📦 Download Complete Package';
                     button.style.background = 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)';
                     button.disabled = false;
-                }, 3000);
+                }, 2000);
                 
             } catch (error) {
                 console.error('Package creation failed:', error);
@@ -737,7 +747,7 @@ Other</textarea>
         let updateTimeout;
         
         function attachEventListeners() {
-            const inputs = document.querySelectorAll('#form-eyebrow, #form-headline, #form-subheadline, #submit-text, #privacy-text, #success-eyebrow, #success-headline, #success-description, #contact-email, #accent-color, #question-1, #question-1-options');
+            const inputs = document.querySelectorAll('#form-eyebrow, #form-headline, #form-subheadline, #submit-text, #privacy-text, #success-eyebrow, #success-headline, #success-description, #contact-email, #accent-color, #question-1, #question-1-options, #include-phone, #include-title');
             
             inputs.forEach(input => {
                 input.addEventListener('input', () => {
