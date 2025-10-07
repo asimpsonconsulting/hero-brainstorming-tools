@@ -181,16 +181,20 @@
         }
         
         .form-preview {
-            background: white;
+            background: #f9fafb;
             border-radius: 16px;
-            padding: 40px;
+            padding: 0;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             margin-bottom: 30px;
+            overflow: hidden;
         }
         
         .form-container {
             max-width: 500px;
             margin: 0 auto;
+            background: white;
+            padding: 40px;
+            min-height: 400px;
         }
         
         .variation-label {
@@ -756,6 +760,7 @@ Other</textarea>
                     contactEmail: document.getElementById('contact-email').value,
                     question1: document.getElementById('question-1').value,
                     question1Options: document.getElementById('question-1-options').value,
+                    selectedFields: Array.from(document.getElementById('required-fields').selectedOptions).map(option => option.value),
                     generatedDate: date
                 };
                 
@@ -770,19 +775,26 @@ Other</textarea>
                 URL.revokeObjectURL(configUrl);
                 
                 // 3. Download HTML Template Instructions
+                const selectedFields = Array.from(document.getElementById('required-fields').selectedOptions).map(option => option.value);
                 const htmlInstructions = 'OneView Web-to-Lead Form HTML Template\\n\\n' +
-                    'Use this configuration with your HTML template:\\n\\n' +
-                    '1. Form Headline: ' + formConfig.headline + '\\n' +
-                    '2. Form Eyebrow: ' + formConfig.eyebrow + '\\n' +
-                    '3. Submit Button: ' + formConfig.submitText + '\\n' +
-                    '4. Accent Color: ' + formConfig.accentColor + '\\n' +
-                    '5. Privacy Text: ' + formConfig.privacyText + '\\n\\n' +
-                    'Success Page Configuration:\\n' +
+                    'FORM CONFIGURATION:\\n' +
+                    '- Form Headline: ' + formConfig.headline + '\\n' +
+                    '- Form Eyebrow: ' + formConfig.eyebrow + '\\n' +
+                    '- Submit Button: ' + formConfig.submitText + '\\n' +
+                    '- Accent Color: ' + formConfig.accentColor + '\\n' +
+                    '- Privacy Text: ' + formConfig.privacyText + '\\n\\n' +
+                    'FORM FIELDS SELECTED:\\n' +
+                    '- ' + selectedFields.join('\\n- ') + '\\n\\n' +
+                    'SUCCESS PAGE CONFIGURATION:\\n' +
                     '- Success Eyebrow: ' + formConfig.successEyebrow + '\\n' +
                     '- Success Headline: ' + formConfig.successHeadline + '\\n' +
                     '- Success Description: ' + formConfig.successDescription + '\\n' +
                     '- Contact Email: ' + formConfig.contactEmail + '\\n\\n' +
-                    (formConfig.question1 ? 'Qualifying Question: ' + formConfig.question1 + '\\nOptions: ' + formConfig.question1Options.split('\\n').join(', ') + '\\n\\n' : '') +
+                    (formConfig.question1 ? 'QUALIFYING QUESTION:\\n' + formConfig.question1 + '\\nOptions: ' + formConfig.question1Options.split('\\n').join(', ') + '\\n\\n' : '') +
+                    'DESIGN NOTES:\\n' +
+                    '- Clean white background for form content\\n' +
+                    '- Consistent OneView branding throughout\\n' +
+                    '- Mobile responsive design\\n\\n' +
                     'Generated: ' + date + ' from OneView ToolKit';
                 
                 const htmlBlob = new Blob([htmlInstructions], { type: 'text/plain' });
@@ -806,13 +818,15 @@ Other</textarea>
                     '- Headline: ' + formConfig.headline + '\\n' +
                     '- CTA: ' + formConfig.submitText + '\\n' +
                     '- Accent Color: ' + formConfig.accentColor + '\\n' +
+                    '- Selected Fields: ' + formConfig.selectedFields.join(', ') + '\\n' +
                     (formConfig.question1 ? '- Qualifying Question: ' + formConfig.question1 + '\\n' : '') +
                     '\\n## Setup Steps\\n' +
                     '1. Enable Web-to-Lead in Salesforce\\n' +
                     '2. Create assignment rule for David Bresears\\n' +
                     '3. Set up team notifications\\n' +
-                    '4. Upload HTML files to web server\\n' +
-                    '5. Test complete flow\\n\\n' +
+                    '4. Create custom fields for selected optional fields\\n' +
+                    '5. Upload HTML files to web server\\n' +
+                    '6. Test complete flow\\n\\n' +
                     'Generated: ' + date + ' from OneView ToolKit';
                 
                 const instructionsBlob = new Blob([instructions], { type: 'text/markdown' });
