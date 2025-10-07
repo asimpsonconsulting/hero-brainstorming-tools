@@ -267,6 +267,52 @@
             box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
         }
         
+        /* Accent Color Variations */
+        .accent-orange-red .field-input:focus {
+            border-color: #f97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+        
+        .accent-orange-red .submit-btn {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+        
+        .accent-orange-red .submit-btn:hover {
+            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+        }
+        
+        .accent-orange-red .form-eyebrow {
+            color: #f97316;
+        }
+        
+        .accent-blue .field-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .accent-blue .submit-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .accent-blue .submit-btn:hover {
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        
+        .accent-blue .form-eyebrow {
+            color: #3b82f6;
+        }
+        
+        /* Success Page Accent Colors */
+        .accent-orange-red .success-accent-text {
+            color: #f97316 !important;
+        }
+        
+        .accent-blue .success-accent-text {
+            color: #3b82f6 !important;
+        }
+        
         .field-input::placeholder {
             color: #9ca3af;
         }
@@ -388,6 +434,43 @@
                 </div>
                 
                 <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
+                    <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">🎨 Form Accent Color</h3>
+                    
+                    <div class="form-group">
+                        <label>Accent Color</label>
+                        <select id="accent-color" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 6px; font-size: 14px;">
+                            <option value="orange-red">Primary Brand (Orange to Red)</option>
+                            <option value="green" selected>Success Green (Current)</option>
+                            <option value="blue">Secondary Blue (Blue to Cyan)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
+                    <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">✅ Success Page Configuration</h3>
+                    
+                    <div class="form-group">
+                        <label>Success Eyebrow</label>
+                        <input type="text" id="success-eyebrow" placeholder="e.g., ANALYSIS REQUESTED" value="ANALYSIS REQUESTED">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Success Headline</label>
+                        <input type="text" id="success-headline" placeholder="e.g., Thank you for starting your journey!" value="Thank you for starting your journey!">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Success Description</label>
+                        <textarea id="success-description" placeholder="What happens next...">Our GTM operations experts are preparing your personalized capacity analysis. You'll receive your insights within 2-3 business days.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Contact Email</label>
+                        <input type="text" id="contact-email" placeholder="e.g., hello@oneviewlabs.com" value="hello@oneviewlabs.com">
+                    </div>
+                </div>
+                
+                <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
                     <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">❓ Qualifying Questions</h3>
                     
                     <div class="form-group">
@@ -450,7 +533,7 @@ Other</textarea>
                 <button class="download-btn" onclick="downloadCompletePackage()">📦 Download Complete Package</button>
                 
                 <div class="business-impact">
-                    <strong>Why this matters:</strong> Form optimization can increase lead conversion by 25-40%. Test different headlines, field combinations, and layouts to find what converts best for your audience. Download package includes screenshot, HTML code, and Salesforce setup instructions for immediate implementation.
+                    <strong>Why this matters:</strong> Form optimization can increase lead conversion by 25-40%. Test different headlines, field combinations, accent colors, and layouts to find what converts best. Complete package includes: form screenshot, production HTML, success page HTML, and Salesforce setup instructions for immediate deployment.
                 </div>
             </div>
             
@@ -578,9 +661,9 @@ Other</textarea>
                             </svg>
                         </div>
                         
-                        <div class="form-eyebrow" style="color: #22c55e;">ANALYSIS REQUESTED</div>
-                        <h2 style="font-size: 32px; font-weight: 700; color: #1f2937; margin-bottom: 15px;">Thank you for starting your journey!</h2>
-                        <p style="font-size: 16px; color: #6b7280; margin-bottom: 20px;">Our GTM operations experts are preparing your personalized capacity analysis. You'll receive your insights within 2-3 business days.</p>
+                        <div class="form-eyebrow success-accent-text" data-field="success-eyebrow" style="color: #22c55e;">ANALYSIS REQUESTED</div>
+                        <h2 class="success-headline" data-field="success-headline" style="font-size: 32px; font-weight: 700; color: #1f2937; margin-bottom: 15px;">Thank you for starting your journey!</h2>
+                        <p class="success-description" data-field="success-description" style="font-size: 16px; color: #6b7280; margin-bottom: 20px;">Our GTM operations experts are preparing your personalized capacity analysis. You'll receive your insights within 2-3 business days.</p>
                         
                         <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
                             <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 10px;">What happens next?</h3>
@@ -591,7 +674,7 @@ Other</textarea>
                             </div>
                         </div>
                         
-                        <p style="font-size: 12px; color: #9ca3af; margin-top: 20px;">Questions? Contact hello@oneviewlabs.com</p>
+                        <p style="font-size: 12px; color: #9ca3af; margin-top: 20px;" data-field="contact-email">Questions? Contact hello@oneviewlabs.com</p>
                     </div>
                 </div>
             </div>
@@ -607,7 +690,11 @@ Other</textarea>
                 'form-headline': document.getElementById('form-headline').value,
                 'form-subheadline': document.getElementById('form-subheadline').value,
                 'submit-text': document.getElementById('submit-text').value,
-                'privacy-text': document.getElementById('privacy-text').value
+                'privacy-text': document.getElementById('privacy-text').value,
+                'success-eyebrow': document.getElementById('success-eyebrow').value,
+                'success-headline': document.getElementById('success-headline').value,
+                'success-description': document.getElementById('success-description').value,
+                'contact-email': 'Questions? Contact ' + document.getElementById('contact-email').value
             };
             
             // Update all elements with data-field attributes
@@ -680,6 +767,21 @@ Other</textarea>
                 nameRow.style.display = 'none';
             }
             
+            // Handle accent color changes
+            const accentColor = document.getElementById('accent-color').value;
+            const formContainer = document.querySelector('.form-container');
+            
+            // Remove existing accent classes
+            formContainer.classList.remove('accent-orange-red', 'accent-green', 'accent-blue');
+            
+            // Add new accent class
+            if (accentColor === 'orange-red') {
+                formContainer.classList.add('accent-orange-red');
+            } else if (accentColor === 'blue') {
+                formContainer.classList.add('accent-blue');
+            }
+            // Green is default, no class needed
+            
             // Add visual feedback
             const button = document.querySelector('.update-btn');
             button.textContent = '✅ Updated!';
@@ -734,6 +836,18 @@ Other</textarea>
                 document.body.removeChild(htmlLink);
                 URL.revokeObjectURL(htmlUrl);
                 
+                // Download Success Page HTML
+                const successHtml = generateSuccessPageHTML();
+                const successBlob = new Blob([successHtml], { type: 'text/html' });
+                const successUrl = URL.createObjectURL(successBlob);
+                const successLink = document.createElement('a');
+                successLink.download = `oneview-success-page-${date}.html`;
+                successLink.href = successUrl;
+                document.body.appendChild(successLink);
+                successLink.click();
+                document.body.removeChild(successLink);
+                URL.revokeObjectURL(successUrl);
+                
                 // Download Salesforce instructions
                 const instructionsBlob = new Blob([sfInstructions], { type: 'text/markdown' });
                 const instructionsUrl = URL.createObjectURL(instructionsBlob);
@@ -745,7 +859,7 @@ Other</textarea>
                 document.body.removeChild(instructionsLink);
                 URL.revokeObjectURL(instructionsUrl);
                 
-                button.textContent = '✅ Package Downloaded!';
+                button.textContent = '✅ Complete Package Downloaded! (4 files)';
                 button.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
                 
                 setTimeout(() => {
@@ -772,11 +886,44 @@ Other</textarea>
                 subheadline: document.getElementById('form-subheadline').value,
                 submitText: document.getElementById('submit-text').value,
                 privacyText: document.getElementById('privacy-text').value,
+                accentColor: document.getElementById('accent-color').value,
+                successEyebrow: document.getElementById('success-eyebrow').value,
+                successHeadline: document.getElementById('success-headline').value,
+                successDescription: document.getElementById('success-description').value,
+                contactEmail: document.getElementById('contact-email').value,
                 question1: document.getElementById('question-1').value,
                 question1Options: document.getElementById('question-1-options').value,
                 question2: document.getElementById('question-2').value,
                 question2Options: document.getElementById('question-2-options').value
             };
+            
+            // Get accent color CSS
+            const getAccentColorCSS = (color) => {
+                if (color === 'orange-red') {
+                    return {
+                        focusBorder: '#f97316',
+                        focusRing: 'rgba(249, 115, 22, 0.1)',
+                        buttonGradient: 'from-orange-500 to-red-500',
+                        eyebrowColor: 'text-orange-600'
+                    };
+                } else if (color === 'blue') {
+                    return {
+                        focusBorder: '#3b82f6',
+                        focusRing: 'rgba(59, 130, 246, 0.1)',
+                        buttonGradient: 'from-blue-500 to-cyan-500',
+                        eyebrowColor: 'text-blue-600'
+                    };
+                } else {
+                    return {
+                        focusBorder: '#22c55e',
+                        focusRing: 'rgba(34, 197, 94, 0.1)',
+                        buttonGradient: 'from-green-500 to-emerald-500',
+                        eyebrowColor: 'text-green-600'
+                    };
+                }
+            };
+            
+            const accentStyles = getAccentColorCSS(formData.accentColor);
             
             // Generate the complete HTML file based on the implementation package
             return `<!DOCTYPE html>
@@ -848,7 +995,7 @@ Other</textarea>
                     
                     <!-- Form Header -->
                     <div class="text-center mb-8">
-                        <div class="text-xs font-semibold text-green-600 uppercase tracking-wider mb-2">${formData.eyebrow}</div>
+                        <div class="text-xs font-semibold ${accentStyles.eyebrowColor} uppercase tracking-wider mb-2">${formData.eyebrow}</div>
                         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">${formData.headline}</h1>
                         <p class="text-lg text-gray-600">${formData.subheadline}</p>
                     </div>
@@ -861,7 +1008,7 @@ Other</textarea>
                             </label>
                             <input name="first_name" type="text" maxlength="40" required 
                                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                                   placeholder="John">
+                                   placeholder="John" style="border-color: #e5e7eb;" onfocus="this.style.borderColor='${accentStyles.focusBorder}'; this.style.boxShadow='0 0 0 3px ${accentStyles.focusRing}'" onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none'"
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">
@@ -906,7 +1053,7 @@ Other</textarea>
                     <!-- Submit Button -->
                     <div class="text-center pt-6">
                         <button type="submit"
-                                class="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition duration-300 w-full">
+                                class="bg-gradient-to-r ${accentStyles.buttonGradient} text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition duration-300 w-full">
                             ${formData.submitText}
                         </button>
                         <p class="text-sm text-gray-500 mt-4">
@@ -1008,6 +1155,170 @@ This form matches OneView's implementation package specifications and is ready f
 
 For questions, contact the OneView development team.
 \`;
+        }
+        
+        // Generate success page HTML
+        function generateSuccessPageHTML() {
+            const successData = {
+                eyebrow: document.getElementById('success-eyebrow').value,
+                headline: document.getElementById('success-headline').value,
+                description: document.getElementById('success-description').value,
+                contactEmail: document.getElementById('contact-email').value,
+                accentColor: document.getElementById('accent-color').value
+            };
+            
+            const accentStyles = {
+                'orange-red': { gradient: 'from-orange-500 to-red-500', eyebrowColor: 'text-orange-600' },
+                'blue': { gradient: 'from-blue-500 to-cyan-500', eyebrowColor: 'text-blue-600' },
+                'green': { gradient: 'from-green-500 to-emerald-500', eyebrowColor: 'text-green-600' }
+            }[successData.accentColor] || { gradient: 'from-green-500 to-emerald-500', eyebrowColor: 'text-green-600' };
+            
+            return \`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Requested - OneView Labs</title>
+    <meta name="description" content="${successData.description}">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+        
+        // Track conversion
+        gtag('event', 'conversion', {
+            'event_category': 'lead_generation',
+            'event_label': 'analysis_request_complete'
+        });
+    </script>
+</head>
+<body class="font-inter bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <img src="https://interfaces-cdn.zapier.com/3bd0bacb-6f98-41e7-98c7-0e6fae14b251/1vLABShorizontal09.png" alt="OneViewLabs Logo" class="h-8">
+                <a href="/" class="text-gray-600 hover:text-gray-800 font-medium transition duration-200">← Back to Form</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
+            
+            <!-- Success Message -->
+            <div class="text-center mb-16">
+                <!-- Success Icon -->
+                <div class="w-24 h-24 bg-gradient-to-r ${accentStyles.gradient} rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
+                    <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-6">
+                    <div class="text-xs font-semibold ${accentStyles.eyebrowColor} uppercase tracking-wider mb-4">${successData.eyebrow}</div>
+                    <span class="bg-gradient-to-r ${accentStyles.gradient} bg-clip-text text-transparent">
+                        ${successData.headline}
+                    </span>
+                </h1>
+                
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+                    ${successData.description}
+                </p>
+            </div>
+
+            <!-- What Happens Next -->
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden mb-16">
+                <div class="bg-gradient-to-r ${accentStyles.gradient} p-8 text-white text-center">
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-2">What Happens Next?</h2>
+                    <p class="text-blue-100">Your personalized capacity analysis timeline</p>
+                </div>
+                
+                <div class="p-8">
+                    <div class="space-y-8">
+                        <!-- Timeline Steps -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r ${accentStyles.gradient} rounded-full flex items-center justify-center text-white font-bold text-lg mr-6">1</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Review & Analysis</h3>
+                                <p class="text-gray-600 mb-2">Our experts review your GTM operations profile and identify capacity optimization opportunities.</p>
+                                <span class="inline-block bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full font-medium">Within 24 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-6">2</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Capacity Assessment Creation</h3>
+                                <p class="text-gray-600 mb-2">We build your customized analysis highlighting engagement capacity gaps and optimization strategies.</p>
+                                <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium">1-2 business days</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r ${accentStyles.gradient} rounded-full flex items-center justify-center text-white font-bold text-lg mr-6">3</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Analysis Delivery</h3>
+                                <p class="text-gray-600 mb-2">Receive your personalized capacity optimization analysis with specific recommendations.</p>
+                                <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full font-medium">2-3 business days</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-8 text-white text-center">
+                <h2 class="text-2xl font-semibold mb-4">Questions? We're Here to Help</h2>
+                <p class="text-gray-300 mb-6">Our GTM operations experts are available to discuss your specific needs.</p>
+                
+                <a href="mailto:${successData.contactEmail}" class="inline-flex items-center text-gray-300 hover:text-white transition duration-200">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                    </svg>
+                    ${successData.contactEmail}
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="https://interfaces-cdn.zapier.com/20169154-0c6b-4ca7-8e9a-7cb5d8b609b9/1vLABShorizontal08.png" alt="OneViewLabs Logo" class="h-8 mx-auto mb-4">
+            <p class="text-gray-400 text-sm">© 2025 OneView Labs. Transforming GTM complexity into clear, actionable insights.</p>
+        </div>
+    </footer>
+
+</body>
+</html>\`;
         }
         
         // Auto-update as user types
