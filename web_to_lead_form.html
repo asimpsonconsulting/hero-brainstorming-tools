@@ -388,6 +388,44 @@
                 </div>
                 
                 <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
+                    <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">❓ Qualifying Questions</h3>
+                    
+                    <div class="form-group">
+                        <label>Question 1 (Optional)</label>
+                        <input type="text" id="question-1" placeholder="e.g., What's your primary GTM challenge?" value="What's your primary GTM challenge?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Question 1 Options (one per line)</label>
+                        <textarea id="question-1-options" placeholder="Pipeline unpredictability
+Team capacity bottlenecks
+Scaling sales efforts">Pipeline unpredictability
+Team capacity bottlenecks
+Scaling sales efforts
+GTM tool optimization
+International expansion
+ROI measurement
+Other</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Question 2 (Optional)</label>
+                        <input type="text" id="question-2" placeholder="e.g., What's your team size?" value="">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Question 2 Options (one per line)</label>
+                        <textarea id="question-2-options" placeholder="1-10 employees
+11-50 employees
+51-200 employees">1-10 employees
+11-50 employees
+51-200 employees
+201-500 employees
+500+ employees</textarea>
+                    </div>
+                </div>
+                
+                <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
                     <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">📋 Form Fields</h3>
                     
                     <div class="form-group">
@@ -409,18 +447,18 @@
                 
                 <button class="update-btn" onclick="updateFormPreview()">✨ Update Form</button>
                 
-                <button class="download-btn" onclick="downloadScreenshot()">📸 Save Screenshot</button>
+                <button class="download-btn" onclick="downloadCompletePackage()">📦 Download Complete Package</button>
                 
                 <div class="business-impact">
-                    <strong>Why this matters:</strong> Form optimization can increase lead conversion by 25-40%. Test different headlines, field combinations, and layouts to find what converts best for your audience before going live.
+                    <strong>Why this matters:</strong> Form optimization can increase lead conversion by 25-40%. Test different headlines, field combinations, and layouts to find what converts best for your audience. Download package includes screenshot, HTML code, and Salesforce setup instructions for immediate implementation.
                 </div>
             </div>
             
             <!-- Form Previews -->
             <div class="form-variations">
-                <!-- Version 1: Centered Form -->
+                <!-- Version 1: Lead Capture Form -->
                 <div class="form-preview">
-                    <div class="variation-label">Version 1: Centered Lead Capture</div>
+                    <div class="variation-label">Lead Capture Form Preview</div>
                     <div class="form-container">
                         <div class="form-header">
                             <div class="form-eyebrow" data-field="form-eyebrow">GET YOUR FREE</div>
@@ -503,19 +541,21 @@
                                 </div>
                             </div>
                             
-                            <!-- Qualification Question -->
-                            <div class="form-row" style="display: none;" data-field="gtm-challenge">
+                            <!-- Dynamic Qualifying Questions -->
+                            <div class="form-row" data-field="question-1" style="display: none;">
                                 <div class="field-group">
-                                    <label class="field-label">What's your primary GTM challenge? *</label>
-                                    <select class="field-input" required>
+                                    <label class="field-label" data-field="question-1-label">What's your primary GTM challenge? *</label>
+                                    <select class="field-input" data-field="question-1-select">
                                         <option value="">Select your primary challenge</option>
-                                        <option value="Pipeline unpredictability">Pipeline unpredictability</option>
-                                        <option value="Team capacity bottlenecks">Team capacity bottlenecks</option>
-                                        <option value="Scaling sales efforts">Scaling sales efforts</option>
-                                        <option value="GTM tool optimization">GTM tool optimization</option>
-                                        <option value="International expansion">International expansion</option>
-                                        <option value="ROI measurement">ROI measurement</option>
-                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row" data-field="question-2" style="display: none;">
+                                <div class="field-group">
+                                    <label class="field-label" data-field="question-2-label">Team Size</label>
+                                    <select class="field-input" data-field="question-2-select">
+                                        <option value="">Select team size</option>
                                     </select>
                                 </div>
                             </div>
@@ -524,6 +564,34 @@
                         </form>
                         
                         <p class="privacy-text" data-field="privacy-text">I consent to OneView Labs processing my personal data to provide the requested analysis and follow-up communications.</p>
+                    </div>
+                </div>
+                
+                <!-- Success Page Preview -->
+                <div class="form-preview">
+                    <div class="variation-label">Success Page Preview</div>
+                    <div class="form-container" style="text-align: center; padding: 40px;">
+                        <!-- Success Icon -->
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #22c55e 0%, #10b981 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; animation: pulse 2s infinite;">
+                            <svg style="width: 40px; height: 40px; color: white;" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        
+                        <div class="form-eyebrow" style="color: #22c55e;">ANALYSIS REQUESTED</div>
+                        <h2 style="font-size: 32px; font-weight: 700; color: #1f2937; margin-bottom: 15px;">Thank you for starting your journey!</h2>
+                        <p style="font-size: 16px; color: #6b7280; margin-bottom: 20px;">Our GTM operations experts are preparing your personalized capacity analysis. You'll receive your insights within 2-3 business days.</p>
+                        
+                        <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                            <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 10px;">What happens next?</h3>
+                            <div style="text-align: left; font-size: 14px; color: #6b7280;">
+                                <p style="margin-bottom: 8px;">✅ <strong>Day 1:</strong> Data review & analysis begins</p>
+                                <p style="margin-bottom: 8px;">📊 <strong>Day 2-3:</strong> Custom capacity assessment creation</p>
+                                <p>📧 <strong>Day 3:</strong> Analysis delivered to your inbox</p>
+                            </div>
+                        </div>
+                        
+                        <p style="font-size: 12px; color: #9ca3af; margin-top: 20px;">Questions? Contact hello@oneviewlabs.com</p>
                     </div>
                 </div>
             </div>
@@ -570,6 +638,36 @@
                 });
             });
             
+            // Handle dynamic qualifying questions
+            const question1 = document.getElementById('question-1').value;
+            const question1Options = document.getElementById('question-1-options').value;
+            const question2 = document.getElementById('question-2').value;
+            const question2Options = document.getElementById('question-2-options').value;
+            
+            // Update question 1
+            if (question1.trim()) {
+                document.querySelector('[data-field="question-1-label"]').textContent = question1 + ' *';
+                const q1Select = document.querySelector('[data-field="question-1-select"]');
+                q1Select.innerHTML = '<option value="">Select option</option>' + 
+                    question1Options.split('\n').map(opt => opt.trim()).filter(opt => opt).map(opt => 
+                        `<option value="${opt}">${opt}</option>`).join('');
+                document.querySelector('[data-field="question-1"]').style.display = 'block';
+            } else {
+                document.querySelector('[data-field="question-1"]').style.display = 'none';
+            }
+            
+            // Update question 2  
+            if (question2.trim()) {
+                document.querySelector('[data-field="question-2-label"]').textContent = question2;
+                const q2Select = document.querySelector('[data-field="question-2-select"]');
+                q2Select.innerHTML = '<option value="">Select option</option>' + 
+                    question2Options.split('\n').map(opt => opt.trim()).filter(opt => opt).map(opt => 
+                        `<option value="${opt}">${opt}</option>`).join('');
+                document.querySelector('[data-field="question-2"]').style.display = 'block';
+            } else {
+                document.querySelector('[data-field="question-2"]').style.display = 'none';
+            }
+            
             // Handle two-column layout for first/last name
             const nameRow = document.querySelector('.form-row.two-col');
             if (selectedFields.includes('first-name') && selectedFields.includes('last-name')) {
@@ -593,13 +691,14 @@
             }, 1500);
         }
         
-        // Download screenshot
-        async function downloadScreenshot() {
+        // Download complete package (screenshot + HTML + instructions)
+        async function downloadCompletePackage() {
             const button = document.querySelector('.download-btn');
-            button.textContent = '📸 Capturing...';
+            button.textContent = '📦 Creating Package...';
             button.disabled = true;
             
             try {
+                // Step 1: Generate screenshot
                 const formPreview = document.querySelector('.form-variations');
                 const canvas = await html2canvas(formPreview, {
                     scale: 1,
@@ -607,31 +706,308 @@
                     backgroundColor: '#f9fafb'
                 });
                 
-                const link = document.createElement('a');
-                link.download = `lead-form-${new Date().toISOString().slice(0, 10)}.png`;
-                link.href = canvas.toDataURL();
+                // Step 2: Generate HTML code
+                const htmlCode = generateFormHTML();
                 
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                // Step 3: Generate Salesforce instructions
+                const sfInstructions = generateSalesforceInstructions();
                 
-                button.textContent = '✅ Saved!';
+                // Step 4: Create package files
+                const date = new Date().toISOString().slice(0, 10);
+                
+                // Download screenshot
+                const screenshotLink = document.createElement('a');
+                screenshotLink.download = `oneview-form-preview-${date}.png`;
+                screenshotLink.href = canvas.toDataURL();
+                document.body.appendChild(screenshotLink);
+                screenshotLink.click();
+                document.body.removeChild(screenshotLink);
+                
+                // Download HTML file
+                const htmlBlob = new Blob([htmlCode], { type: 'text/html' });
+                const htmlUrl = URL.createObjectURL(htmlBlob);
+                const htmlLink = document.createElement('a');
+                htmlLink.download = `oneview-form-${date}.html`;
+                htmlLink.href = htmlUrl;
+                document.body.appendChild(htmlLink);
+                htmlLink.click();
+                document.body.removeChild(htmlLink);
+                URL.revokeObjectURL(htmlUrl);
+                
+                // Download Salesforce instructions
+                const instructionsBlob = new Blob([sfInstructions], { type: 'text/markdown' });
+                const instructionsUrl = URL.createObjectURL(instructionsBlob);
+                const instructionsLink = document.createElement('a');
+                instructionsLink.download = `salesforce-setup-instructions-${date}.md`;
+                instructionsLink.href = instructionsUrl;
+                document.body.appendChild(instructionsLink);
+                instructionsLink.click();
+                document.body.removeChild(instructionsLink);
+                URL.revokeObjectURL(instructionsUrl);
+                
+                button.textContent = '✅ Package Downloaded!';
                 button.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
                 
                 setTimeout(() => {
-                    button.textContent = '📸 Save Screenshot';
+                    button.textContent = '📦 Download Complete Package';
                     button.style.background = 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)';
                     button.disabled = false;
-                }, 2000);
+                }, 3000);
                 
             } catch (error) {
-                console.error('Screenshot failed:', error);
+                console.error('Package creation failed:', error);
                 button.textContent = '❌ Error - Try Again';
                 setTimeout(() => {
-                    button.textContent = '📸 Save Screenshot';
+                    button.textContent = '📦 Download Complete Package';
                     button.disabled = false;
                 }, 2000);
             }
+        }
+        
+        // Generate production-ready HTML code
+        function generateFormHTML() {
+            const formData = {
+                eyebrow: document.getElementById('form-eyebrow').value,
+                headline: document.getElementById('form-headline').value,
+                subheadline: document.getElementById('form-subheadline').value,
+                submitText: document.getElementById('submit-text').value,
+                privacyText: document.getElementById('privacy-text').value,
+                question1: document.getElementById('question-1').value,
+                question1Options: document.getElementById('question-1-options').value,
+                question2: document.getElementById('question-2').value,
+                question2Options: document.getElementById('question-2-options').value
+            };
+            
+            // Generate the complete HTML file based on the implementation package
+            return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${formData.headline} - OneView Labs</title>
+    <meta name="description" content="${formData.subheadline}">
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Analytics - REPLACE WITH YOUR GA4 ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</head>
+<body class="font-inter bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <img src="https://interfaces-cdn.zapier.com/3bd0bacb-6f98-41e7-98c7-0e6fae14b251/1vLABShorizontal09.png" alt="OneViewLabs Logo" class="h-8">
+                <div class="text-sm text-gray-600">
+                    <span class="bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent font-semibold">Secure</span> • 
+                    <span class="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent font-semibold">GDPR Compliant</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
+            
+            <!-- Form -->
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <form 
+                    action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
+                    method="POST"
+                    class="p-8 space-y-6">
+
+                    <!-- REPLACE WITH YOUR ACTUAL SALESFORCE VALUES -->
+                    <input type="hidden" name="oid" value="YOUR_SFDC_ORG_ID_HERE">
+                    <input type="hidden" name="retURL" value="https://YOUR_DOMAIN.com/success">
+                    <input type="hidden" name="lead_source" value="Website Contact Form">
+                    
+                    <!-- Form Header -->
+                    <div class="text-center mb-8">
+                        <div class="text-xs font-semibold text-green-600 uppercase tracking-wider mb-2">${formData.eyebrow}</div>
+                        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">${formData.headline}</h1>
+                        <p class="text-lg text-gray-600">${formData.subheadline}</p>
+                    </div>
+                    
+                    <!-- Form Fields -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">
+                                First Name <span class="text-red-500">*</span>
+                            </label>
+                            <input name="first_name" type="text" maxlength="40" required 
+                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                   placeholder="John">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">
+                                Last Name <span class="text-red-500">*</span>
+                            </label>
+                            <input name="last_name" type="text" maxlength="80" required
+                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                   placeholder="Smith">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">
+                                Work Email <span class="text-red-500">*</span>
+                            </label>
+                            <input name="email" type="email" maxlength="80" required
+                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                   placeholder="john.smith@company.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">
+                                Company <span class="text-red-500">*</span>
+                            </label>
+                            <input name="company" type="text" maxlength="40" required
+                                   class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                   placeholder="Acme Corp">
+                        </div>
+                    </div>
+                    ${formData.question1 ? `
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            ${formData.question1} <span class="text-red-500">*</span>
+                        </label>
+                        <select name="00N000000000000" required
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            <option value="">Select option</option>
+                            ${formData.question1Options.split('\n').map(option => `<option value="${option.trim()}">${option.trim()}</option>`).join('\n                            ')}
+                        </select>
+                    </div>` : ''}
+
+                    <!-- Submit Button -->
+                    <div class="text-center pt-6">
+                        <button type="submit"
+                                class="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition duration-300 w-full">
+                            ${formData.submitText}
+                        </button>
+                        <p class="text-sm text-gray-500 mt-4">
+                            Analysis ready within 2-3 business days • Free • No spam, ever
+                        </p>
+                    </div>
+
+                    <!-- Privacy -->
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500">${formData.privacyText}</p>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="https://interfaces-cdn.zapier.com/20169154-0c6b-4ca7-8e9a-7cb5d8b609b9/1vLABShorizontal08.png" alt="OneViewLabs Logo" class="h-8 mx-auto mb-4">
+            <p class="text-gray-400 text-sm">© 2025 OneView Labs. Transforming GTM complexity into clear, actionable insights.</p>
+        </div>
+    </footer>
+
+    <!-- Form Analytics -->
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submit', {
+                    'event_category': 'lead_generation',
+                    'event_label': 'capacity_analysis_request'
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>`;
+        }
+        
+        // Generate Salesforce setup instructions
+        function generateSalesforceInstructions() {
+            return \`# OneView Web-to-Lead Form - Salesforce Setup Instructions
+
+## 🔧 Pre-Deployment Checklist
+
+### Step 1: Update HTML File
+Replace these placeholder values in your HTML file:
+
+\\\`\\\`\\\`html
+<!-- Replace: -->
+<input type="hidden" name="oid" value="YOUR_SFDC_ORG_ID_HERE">
+<input type="hidden" name="retURL" value="https://YOUR_DOMAIN.com/success">
+<select name="00N000000000000">
+
+<!-- With your actual values: -->
+<input type="hidden" name="oid" value="[YOUR_ORG_ID]">
+<input type="hidden" name="retURL" value="[YOUR_SUCCESS_URL]">
+<select name="[CUSTOM_FIELD_API_NAME]">
+\\\`\\\`\\\`
+
+### Step 2: Salesforce Configuration
+
+**Lead Assignment:**
+- Lead Owner: David Bresears
+- Notifications: David Bresears, Sean Lee, Remington Rawlings
+- Lead Source: "Website Contact Form"
+
+**Custom Fields to Create:**
+1. Primary GTM Challenge (Picklist)
+   - Values: Pipeline unpredictability, Team capacity bottlenecks, etc.
+   - Make required if using qualification questions
+
+**Daily Limit:** 500 submissions (within Salesforce limit)
+
+### Step 3: Enable Web-to-Lead
+1. Setup → Web-to-Lead → Enable
+2. Create assignment rule for David Bresears
+3. Set up email notifications for team
+4. Test with sample submission
+
+### Step 4: Deploy
+1. Upload HTML to your web server
+2. Create success.html page  
+3. Test complete flow
+4. Monitor first submissions
+
+## 📊 Form Configuration Summary
+**Generated on:** \${new Date().toLocaleDateString()}
+**Form Fields:** First Name, Last Name, Work Email, Company Name
+**Lead Owner:** David Bresears  
+**Team Notifications:** David, Sean, Remington
+**Daily Volume:** Within 500/day Salesforce limit
+
+## 🚀 Ready for Production
+This form matches OneView's implementation package specifications and is ready for immediate deployment once Salesforce configuration is complete.
+
+For questions, contact the OneView development team.
+\`;
         }
         
         // Auto-update as user types
