@@ -374,17 +374,17 @@
                 
                 <div class="form-group">
                     <label>Form Sub-headline</label>
-                    <textarea id="form-subheadline" placeholder="Describe what they'll receive...">See exactly where your pipeline bottlenecks occur and get a custom optimization strategy.</textarea>
+                    <textarea id="form-subheadline" placeholder="Describe what they'll receive...">Get personalized insights on how to optimize your team's engagement capacity for measurable pipeline performance improvements.</textarea>
                 </div>
                 
                 <div class="form-group">
                     <label>Submit Button Text</label>
-                    <input type="text" id="submit-text" placeholder="e.g., Get My Analysis" value="Start My Analysis">
+                    <input type="text" id="submit-text" placeholder="e.g., Get My Analysis" value="Begin turning insights into action">
                 </div>
                 
                 <div class="form-group">
                     <label>Privacy Text</label>
-                    <textarea id="privacy-text" placeholder="Privacy policy information...">We respect your privacy. Your information will only be used to provide your analysis and follow-up communication. No spam, ever.</textarea>
+                    <textarea id="privacy-text" placeholder="Privacy policy information...">I consent to OneView Labs processing my personal data to provide the requested analysis and follow-up communications.</textarea>
                 </div>
                 
                 <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
@@ -392,16 +392,17 @@
                     
                     <div class="form-group">
                         <label>Required Fields</label>
-                        <select id="required-fields" multiple style="height: 120px;">
+                        <select id="required-fields" multiple style="height: 140px;">
                             <option value="first-name" selected>First Name</option>
-                            <option value="last-name">Last Name</option>
-                            <option value="email" selected>Email Address</option>
+                            <option value="last-name" selected>Last Name</option>
+                            <option value="email" selected>Company Email Address</option>
                             <option value="company" selected>Company Name</option>
                             <option value="title">Job Title</option>
                             <option value="phone">Phone Number</option>
                             <option value="website">Website URL</option>
                             <option value="team-size">Team Size</option>
                             <option value="revenue">Annual Revenue</option>
+                            <option value="gtm-challenge">GTM Challenge Question</option>
                         </select>
                     </div>
                 </div>
@@ -424,32 +425,32 @@
                         <div class="form-header">
                             <div class="form-eyebrow" data-field="form-eyebrow">GET YOUR FREE</div>
                             <h2 class="form-headline" data-field="form-headline">Capacity Analysis Report</h2>
-                            <p class="form-subheadline" data-field="form-subheadline">See exactly where your pipeline bottlenecks occur and get a custom optimization strategy.</p>
+                            <p class="form-subheadline" data-field="form-subheadline">Get personalized insights on how to optimize your team's engagement capacity for measurable pipeline performance improvements.</p>
                         </div>
                         
                         <form class="lead-form" id="leadForm1">
                             <div class="form-row two-col">
                                 <div class="field-group" data-field="first-name">
                                     <label class="field-label">First Name *</label>
-                                    <input type="text" class="field-input" placeholder="Enter your first name" required>
+                                    <input type="text" class="field-input" placeholder="John" required>
                                 </div>
-                                <div class="field-group" data-field="last-name" style="display: none;">
+                                <div class="field-group" data-field="last-name">
                                     <label class="field-label">Last Name *</label>
-                                    <input type="text" class="field-input" placeholder="Enter your last name">
+                                    <input type="text" class="field-input" placeholder="Smith" required>
                                 </div>
                             </div>
                             
                             <div class="form-row">
                                 <div class="field-group" data-field="email">
-                                    <label class="field-label">Business Email *</label>
-                                    <input type="email" class="field-input" placeholder="you@company.com" required>
+                                    <label class="field-label">Work Email *</label>
+                                    <input type="email" class="field-input" placeholder="john.smith@company.com" required>
                                 </div>
                             </div>
                             
                             <div class="form-row">
                                 <div class="field-group" data-field="company">
-                                    <label class="field-label">Company Name *</label>
-                                    <input type="text" class="field-input" placeholder="Your company name" required>
+                                    <label class="field-label">Company *</label>
+                                    <input type="text" class="field-input" placeholder="Acme Corp" required>
                                 </div>
                             </div>
                             
@@ -502,10 +503,27 @@
                                 </div>
                             </div>
                             
-                            <button type="submit" class="submit-btn" data-field="submit-text">Start My Analysis</button>
+                            <!-- Qualification Question -->
+                            <div class="form-row" style="display: none;" data-field="gtm-challenge">
+                                <div class="field-group">
+                                    <label class="field-label">What's your primary GTM challenge? *</label>
+                                    <select class="field-input" required>
+                                        <option value="">Select your primary challenge</option>
+                                        <option value="Pipeline unpredictability">Pipeline unpredictability</option>
+                                        <option value="Team capacity bottlenecks">Team capacity bottlenecks</option>
+                                        <option value="Scaling sales efforts">Scaling sales efforts</option>
+                                        <option value="GTM tool optimization">GTM tool optimization</option>
+                                        <option value="International expansion">International expansion</option>
+                                        <option value="ROI measurement">ROI measurement</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn" data-field="submit-text">Begin turning insights into action</button>
                         </form>
                         
-                        <p class="privacy-text" data-field="privacy-text">We respect your privacy. Your information will only be used to provide your analysis and follow-up communication. No spam, ever.</p>
+                        <p class="privacy-text" data-field="privacy-text">I consent to OneView Labs processing my personal data to provide the requested analysis and follow-up communications.</p>
                     </div>
                 </div>
             </div>
@@ -540,13 +558,12 @@
             const selectedFields = Array.from(document.getElementById('required-fields').selectedOptions).map(option => option.value);
             
             // Hide all optional fields first
-            const allFieldOptions = ['first-name', 'last-name', 'email', 'company', 'title', 'phone', 'website', 'team-size', 'revenue'];
+            const allFieldOptions = ['first-name', 'last-name', 'email', 'company', 'title', 'phone', 'website', 'team-size', 'revenue', 'gtm-challenge'];
             allFieldOptions.forEach(field => {
                 const fieldElements = document.querySelectorAll(`[data-field="${field}"]`);
                 fieldElements.forEach(element => {
                     if (selectedFields.includes(field)) {
-                        element.style.display = selectedFields.includes('last-name') && field === 'first-name' ? 'block' : 
-                                               (field === 'last-name' && selectedFields.includes('first-name')) ? 'block' : 'block';
+                        element.style.display = 'block';
                     } else {
                         element.style.display = 'none';
                     }
