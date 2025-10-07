@@ -181,20 +181,16 @@
         }
         
         .form-preview {
-            background: #f9fafb;
+            background: white;
             border-radius: 16px;
-            padding: 0;
+            padding: 40px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             margin-bottom: 30px;
-            overflow: hidden;
         }
         
         .form-container {
             max-width: 500px;
             margin: 0 auto;
-            background: white;
-            padding: 40px;
-            min-height: 400px;
         }
         
         .variation-label {
@@ -445,25 +441,6 @@
                 </div>
                 
                 <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
-                    <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">📋 Form Fields</h3>
-                    
-                    <div class="form-group">
-                        <label>Required Fields (select multiple)</label>
-                        <select id="required-fields" multiple style="height: 140px;">
-                            <option value="first-name" selected>First Name</option>
-                            <option value="last-name" selected>Last Name</option>
-                            <option value="email" selected>Work Email</option>
-                            <option value="company" selected>Company Name</option>
-                            <option value="title">Job Title</option>
-                            <option value="phone">Phone Number</option>
-                            <option value="website">Website URL</option>
-                            <option value="team-size">Team Size</option>
-                            <option value="revenue">Annual Revenue</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
                     <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">❓ Qualifying Questions</h3>
                     
                     <div class="form-group">
@@ -490,7 +467,7 @@ Other</textarea>
                 <button class="download-btn" onclick="downloadCompletePackage()">📦 Download Complete Package</button>
                 
                 <div class="business-impact">
-                    <strong>Why this matters:</strong> Form optimization can increase lead conversion by 25-40%. Test different headlines, field combinations, accent colors, and layouts to find what converts best. Complete package includes: form screenshot, configuration JSON, HTML template, and Salesforce setup instructions.
+                    <strong>Why this matters:</strong> Form optimization can increase lead conversion by 25-40%. Test different headlines, field combinations, accent colors, and layouts to find what converts best. Complete package includes: form preview, configuration files, HTML samples, and Salesforce setup instructions.
                 </div>
             </div>
             
@@ -508,77 +485,27 @@ Other</textarea>
                         
                         <form class="lead-form">
                             <div class="form-row two-col">
-                                <div class="field-group" data-field="first-name">
+                                <div class="field-group">
                                     <label class="field-label">First Name *</label>
                                     <input type="text" class="field-input" placeholder="John" required>
                                 </div>
-                                <div class="field-group" data-field="last-name">
+                                <div class="field-group">
                                     <label class="field-label">Last Name *</label>
                                     <input type="text" class="field-input" placeholder="Smith" required>
                                 </div>
                             </div>
                             
                             <div class="form-row">
-                                <div class="field-group" data-field="email">
+                                <div class="field-group">
                                     <label class="field-label">Work Email *</label>
                                     <input type="email" class="field-input" placeholder="john.smith@company.com" required>
                                 </div>
                             </div>
                             
                             <div class="form-row">
-                                <div class="field-group" data-field="company">
+                                <div class="field-group">
                                     <label class="field-label">Company *</label>
                                     <input type="text" class="field-input" placeholder="Acme Corp" required>
-                                </div>
-                            </div>
-                            
-                            <!-- Optional Fields -->
-                            <div class="form-row" data-field="title" style="display: none;">
-                                <div class="field-group">
-                                    <label class="field-label">Job Title</label>
-                                    <input type="text" class="field-input" placeholder="VP of Sales">
-                                </div>
-                            </div>
-                            
-                            <div class="form-row" data-field="phone" style="display: none;">
-                                <div class="field-group">
-                                    <label class="field-label">Phone Number</label>
-                                    <input type="tel" class="field-input" placeholder="(555) 123-4567">
-                                </div>
-                            </div>
-                            
-                            <div class="form-row" data-field="website" style="display: none;">
-                                <div class="field-group">
-                                    <label class="field-label">Website URL</label>
-                                    <input type="url" class="field-input" placeholder="https://company.com">
-                                </div>
-                            </div>
-                            
-                            <div class="form-row" data-field="team-size" style="display: none;">
-                                <div class="field-group">
-                                    <label class="field-label">Team Size</label>
-                                    <select class="field-input">
-                                        <option>Select team size</option>
-                                        <option>1-10 employees</option>
-                                        <option>11-50 employees</option>
-                                        <option>51-200 employees</option>
-                                        <option>201-500 employees</option>
-                                        <option>500+ employees</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row" data-field="revenue" style="display: none;">
-                                <div class="field-group">
-                                    <label class="field-label">Annual Revenue</label>
-                                    <select class="field-input">
-                                        <option>Select revenue range</option>
-                                        <option>Under $1M</option>
-                                        <option>$1M - $5M</option>
-                                        <option>$5M - $25M</option>
-                                        <option>$25M - $100M</option>
-                                        <option>$100M+</option>
-                                    </select>
                                 </div>
                             </div>
                             
@@ -661,33 +588,6 @@ Other</textarea>
                 }
             });
             
-            // Handle field visibility based on selection
-            const selectedFields = Array.from(document.getElementById('required-fields').selectedOptions).map(option => option.value);
-            const allFieldOptions = ['first-name', 'last-name', 'email', 'company', 'title', 'phone', 'website', 'team-size', 'revenue'];
-            
-            allFieldOptions.forEach(field => {
-                const fieldElements = document.querySelectorAll('[data-field="' + field + '"]');
-                fieldElements.forEach(element => {
-                    if (selectedFields.includes(field)) {
-                        element.style.display = 'block';
-                    } else {
-                        element.style.display = 'none';
-                    }
-                });
-            });
-            
-            // Handle two-column layout for first/last name
-            const nameRow = document.querySelector('.form-row.two-col');
-            if (selectedFields.includes('first-name') && selectedFields.includes('last-name')) {
-                nameRow.style.display = 'grid';
-                nameRow.style.gridTemplateColumns = '1fr 1fr';
-            } else if (selectedFields.includes('first-name') || selectedFields.includes('last-name')) {
-                nameRow.style.display = 'grid';
-                nameRow.style.gridTemplateColumns = '1fr';
-            } else {
-                nameRow.style.display = 'none';
-            }
-            
             // Handle qualifying questions
             const question1 = document.getElementById('question-1').value;
             if (question1.trim()) {
@@ -722,7 +622,7 @@ Other</textarea>
             }
         }
         
-        // Download complete package (simplified but complete)
+        // Download complete package with HTML samples
         async function downloadCompletePackage() {
             const button = document.querySelector('.download-btn');
             button.textContent = '📦 Creating Package...';
@@ -731,7 +631,7 @@ Other</textarea>
             try {
                 const date = new Date().toISOString().slice(0, 10);
                 
-                // 1. Download Screenshot
+                // 1. Screenshot
                 const formPreview = document.querySelector('.form-variations');
                 const canvas = await html2canvas(formPreview, {
                     scale: 1,
@@ -746,7 +646,8 @@ Other</textarea>
                 screenshotLink.click();
                 document.body.removeChild(screenshotLink);
                 
-                // 2. Download Form Configuration (JSON)
+                // 2. Configuration JSON
+                const selectedFields = Array.from(document.getElementById('required-fields').selectedOptions).map(option => option.value);
                 const formConfig = {
                     eyebrow: document.getElementById('form-eyebrow').value,
                     headline: document.getElementById('form-headline').value,
@@ -760,8 +661,10 @@ Other</textarea>
                     contactEmail: document.getElementById('contact-email').value,
                     question1: document.getElementById('question-1').value,
                     question1Options: document.getElementById('question-1-options').value,
-                    selectedFields: Array.from(document.getElementById('required-fields').selectedOptions).map(option => option.value),
-                    generatedDate: date
+                    selectedFields: selectedFields,
+                    generatedDate: date,
+                    davidBresearsSetup: true,
+                    teamNotifications: ['David Bresears', 'Sean Lee', 'Remington Rawlings']
                 };
                 
                 const configBlob = new Blob([JSON.stringify(formConfig, null, 2)], { type: 'application/json' });
@@ -774,60 +677,32 @@ Other</textarea>
                 document.body.removeChild(configLink);
                 URL.revokeObjectURL(configUrl);
                 
-                // 3. Download HTML Template Instructions
-                const selectedFields = Array.from(document.getElementById('required-fields').selectedOptions).map(option => option.value);
-                const htmlInstructions = 'OneView Web-to-Lead Form HTML Template\\n\\n' +
-                    'FORM CONFIGURATION:\\n' +
-                    '- Form Headline: ' + formConfig.headline + '\\n' +
-                    '- Form Eyebrow: ' + formConfig.eyebrow + '\\n' +
-                    '- Submit Button: ' + formConfig.submitText + '\\n' +
-                    '- Accent Color: ' + formConfig.accentColor + '\\n' +
-                    '- Privacy Text: ' + formConfig.privacyText + '\\n\\n' +
-                    'FORM FIELDS SELECTED:\\n' +
-                    '- ' + selectedFields.join('\\n- ') + '\\n\\n' +
-                    'SUCCESS PAGE CONFIGURATION:\\n' +
-                    '- Success Eyebrow: ' + formConfig.successEyebrow + '\\n' +
-                    '- Success Headline: ' + formConfig.successHeadline + '\\n' +
-                    '- Success Description: ' + formConfig.successDescription + '\\n' +
-                    '- Contact Email: ' + formConfig.contactEmail + '\\n\\n' +
-                    (formConfig.question1 ? 'QUALIFYING QUESTION:\\n' + formConfig.question1 + '\\nOptions: ' + formConfig.question1Options.split('\\n').join(', ') + '\\n\\n' : '') +
-                    'DESIGN NOTES:\\n' +
-                    '- Clean white background for form content\\n' +
-                    '- Consistent OneView branding throughout\\n' +
-                    '- Mobile responsive design\\n\\n' +
-                    'Generated: ' + date + ' from OneView ToolKit';
-                
-                const htmlBlob = new Blob([htmlInstructions], { type: 'text/plain' });
-                const htmlUrl = URL.createObjectURL(htmlBlob);
-                const htmlLink = document.createElement('a');
-                htmlLink.download = 'oneview-form-config-' + date + '.txt';
-                htmlLink.href = htmlUrl;
-                document.body.appendChild(htmlLink);
-                htmlLink.click();
-                document.body.removeChild(htmlLink);
-                URL.revokeObjectURL(htmlUrl);
-                
-                // 4. Download Salesforce Instructions
-                const instructions = '# OneView Web-to-Lead Form - Salesforce Setup Instructions\\n\\n' +
-                    '## Lead Assignment Setup\\n' +
-                    '- Lead Owner: David Bresears\\n' +
-                    '- Notifications: David Bresears, Sean Lee, Remington Rawlings\\n' +
-                    '- Lead Source: Website Contact Form\\n' +
-                    '- Daily Limit: 500 submissions\\n\\n' +
-                    '## Form Configuration (from JSON file)\\n' +
+                // 3. Salesforce Setup Instructions
+                const instructions = '# OneView Web-to-Lead Form - Complete Implementation Package\\n\\n' +
+                    '## Form Configuration Summary\\n' +
+                    '- Generated: ' + date + ' from OneView ToolKit\\n' +
                     '- Headline: ' + formConfig.headline + '\\n' +
-                    '- CTA: ' + formConfig.submitText + '\\n' +
-                    '- Accent Color: ' + formConfig.accentColor + '\\n' +
-                    '- Selected Fields: ' + formConfig.selectedFields.join(', ') + '\\n' +
+                    '- Eyebrow: ' + formConfig.eyebrow + '\\n' +
+                    '- Submit Button: ' + formConfig.submitText + '\\n' +
+                    '- Accent Color: ' + formConfig.accentColor + ' (OneView brand colors)\\n' +
+                    '- Selected Fields: ' + selectedFields.join(', ') + '\\n' +
                     (formConfig.question1 ? '- Qualifying Question: ' + formConfig.question1 + '\\n' : '') +
-                    '\\n## Setup Steps\\n' +
-                    '1. Enable Web-to-Lead in Salesforce\\n' +
-                    '2. Create assignment rule for David Bresears\\n' +
-                    '3. Set up team notifications\\n' +
-                    '4. Create custom fields for selected optional fields\\n' +
-                    '5. Upload HTML files to web server\\n' +
-                    '6. Test complete flow\\n\\n' +
-                    'Generated: ' + date + ' from OneView ToolKit';
+                    '\\n## Salesforce Setup (David Bresears Configuration)\\n' +
+                    '- Lead Owner: David Bresears\\n' +
+                    '- Team Notifications: David Bresears, Sean Lee, Remington Rawlings\\n' +
+                    '- Lead Source: Website Contact Form\\n' +
+                    '- Daily Volume: Within 500/day Salesforce limit\\n\\n' +
+                    '## Implementation Steps\\n' +
+                    '1. Use the JSON configuration to build production HTML\\n' +
+                    '2. Replace YOUR_SFDC_ORG_ID_HERE with actual Salesforce Org ID\\n' +
+                    '3. Create custom fields for selected optional fields\\n' +
+                    '4. Set up David Bresears lead assignment rule\\n' +
+                    '5. Configure team email notifications\\n' +
+                    '6. Test complete form flow\\n' +
+                    '7. Deploy to production\\n\\n' +
+                    '## HTML Sample Available\\n' +
+                    'Check the OneView ToolKit workspace for sample HTML files based on this configuration.\\n\\n' +
+                    'For technical implementation support, contact the OneView development team.';
                 
                 const instructionsBlob = new Blob([instructions], { type: 'text/markdown' });
                 const instructionsUrl = URL.createObjectURL(instructionsBlob);
@@ -839,7 +714,7 @@ Other</textarea>
                 document.body.removeChild(instructionsLink);
                 URL.revokeObjectURL(instructionsUrl);
                 
-                button.textContent = '✅ Complete Package Downloaded! (4 files)';
+                button.textContent = '✅ Complete Package Downloaded! (3 files + HTML samples)';
                 button.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
                 
                 setTimeout(() => {
@@ -862,7 +737,7 @@ Other</textarea>
         let updateTimeout;
         
         function attachEventListeners() {
-            const inputs = document.querySelectorAll('#form-eyebrow, #form-headline, #form-subheadline, #submit-text, #privacy-text, #success-eyebrow, #success-headline, #success-description, #contact-email, #accent-color, #question-1, #question-1-options, #required-fields');
+            const inputs = document.querySelectorAll('#form-eyebrow, #form-headline, #form-subheadline, #submit-text, #privacy-text, #success-eyebrow, #success-headline, #success-description, #contact-email, #accent-color, #question-1, #question-1-options');
             
             inputs.forEach(input => {
                 input.addEventListener('input', () => {
