@@ -684,29 +684,36 @@ Other</textarea>
     <script>
         // Update form preview
         function updateFormPreview() {
-            // Get form values
-            const formData = {
-                'form-eyebrow': document.getElementById('form-eyebrow').value,
-                'form-headline': document.getElementById('form-headline').value,
-                'form-subheadline': document.getElementById('form-subheadline').value,
-                'submit-text': document.getElementById('submit-text').value,
-                'privacy-text': document.getElementById('privacy-text').value,
-                'success-eyebrow': document.getElementById('success-eyebrow').value,
-                'success-headline': document.getElementById('success-headline').value,
-                'success-description': document.getElementById('success-description').value,
-                'contact-email': 'Questions? Contact ' + document.getElementById('contact-email').value
-            };
+            console.log('updateFormPreview called'); // Debug log
             
-            // Update all elements with data-field attributes
-            for (const [fieldName, value] of Object.entries(formData)) {
-                const elements = document.querySelectorAll(`[data-field="${fieldName}"]`);
-                elements.forEach(element => {
-                    if (element.tagName === 'TEXTAREA' || element.tagName === 'INPUT') {
-                        element.value = value;
-                    } else {
-                        element.textContent = value;
-                    }
-                });
+            try {
+                // Get form values
+                const formData = {
+                    'form-eyebrow': document.getElementById('form-eyebrow').value,
+                    'form-headline': document.getElementById('form-headline').value,
+                    'form-subheadline': document.getElementById('form-subheadline').value,
+                    'submit-text': document.getElementById('submit-text').value,
+                    'privacy-text': document.getElementById('privacy-text').value,
+                    'success-eyebrow': document.getElementById('success-eyebrow').value,
+                    'success-headline': document.getElementById('success-headline').value,
+                    'success-description': document.getElementById('success-description').value,
+                    'contact-email': 'Questions? Contact ' + document.getElementById('contact-email').value
+                };
+                
+                // Update all elements with data-field attributes
+                for (const [fieldName, value] of Object.entries(formData)) {
+                    const elements = document.querySelectorAll(`[data-field="${fieldName}"]`);
+                    console.log(`Updating ${fieldName} with value: ${value}, found ${elements.length} elements`);
+                    elements.forEach(element => {
+                        if (element.tagName === 'TEXTAREA' || element.tagName === 'INPUT') {
+                            element.value = value;
+                        } else {
+                            element.textContent = value;
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Error in updateFormPreview:', error);
             }
             
             // Handle field visibility
@@ -768,19 +775,26 @@ Other</textarea>
             }
             
             // Handle accent color changes
-            const accentColor = document.getElementById('accent-color').value;
-            const formContainer = document.querySelector('.form-container');
-            
-            // Remove existing accent classes
-            formContainer.classList.remove('accent-orange-red', 'accent-green', 'accent-blue');
-            
-            // Add new accent class
-            if (accentColor === 'orange-red') {
-                formContainer.classList.add('accent-orange-red');
-            } else if (accentColor === 'blue') {
-                formContainer.classList.add('accent-blue');
+            try {
+                const accentColor = document.getElementById('accent-color').value;
+                const formContainers = document.querySelectorAll('.form-container');
+                console.log(`Changing accent color to: ${accentColor}`);
+                
+                formContainers.forEach(formContainer => {
+                    // Remove existing accent classes
+                    formContainer.classList.remove('accent-orange-red', 'accent-green', 'accent-blue');
+                    
+                    // Add new accent class
+                    if (accentColor === 'orange-red') {
+                        formContainer.classList.add('accent-orange-red');
+                    } else if (accentColor === 'blue') {
+                        formContainer.classList.add('accent-blue');
+                    }
+                    // Green is default, no class needed
+                });
+            } catch (error) {
+                console.error('Error updating accent color:', error);
             }
-            // Green is default, no class needed
             
             // Add visual feedback
             const button = document.querySelector('.update-btn');
@@ -810,9 +824,11 @@ Other</textarea>
                 
                 // Step 2: Generate HTML code
                 const htmlCode = generateFormHTML();
+                console.log('HTML generated, length:', htmlCode.length);
                 
                 // Step 3: Generate Salesforce instructions
                 const sfInstructions = generateSalesforceInstructions();
+                console.log('Instructions generated, length:', sfInstructions.length);
                 
                 // Step 4: Create package files
                 const date = new Date().toISOString().slice(0, 10);
@@ -1096,9 +1112,9 @@ Other</textarea>
 </html>`;
         }
         
-        // Generate Salesforce setup instructions
+        // Generate Salesforce setup instructions  
         function generateSalesforceInstructions() {
-            return \`# OneView Web-to-Lead Form - Salesforce Setup Instructions
+            return `# OneView Web-to-Lead Form - Salesforce Setup Instructions
 
 ## 🔧 Pre-Deployment Checklist
 
@@ -1144,7 +1160,7 @@ Replace these placeholder values in your HTML file:
 4. Monitor first submissions
 
 ## 📊 Form Configuration Summary
-**Generated on:** \${new Date().toLocaleDateString()}
+**Generated on:** ${new Date().toLocaleDateString()}
 **Form Fields:** First Name, Last Name, Work Email, Company Name
 **Lead Owner:** David Bresears  
 **Team Notifications:** David, Sean, Remington
@@ -1154,7 +1170,7 @@ Replace these placeholder values in your HTML file:
 This form matches OneView's implementation package specifications and is ready for immediate deployment once Salesforce configuration is complete.
 
 For questions, contact the OneView development team.
-\`;
+`;
         }
         
         // Generate success page HTML
@@ -1173,7 +1189,7 @@ For questions, contact the OneView development team.
                 'green': { gradient: 'from-green-500 to-emerald-500', eyebrowColor: 'text-green-600' }
             }[successData.accentColor] || { gradient: 'from-green-500 to-emerald-500', eyebrowColor: 'text-green-600' };
             
-            return \`<!DOCTYPE html>
+            return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1318,22 +1334,34 @@ For questions, contact the OneView development team.
     </footer>
 
 </body>
-</html>\`;
+</html>`;
         }
         
-        // Auto-update as user types
+        // Auto-update as user types (fixed)
         let updateTimeout;
-        const inputs = document.querySelectorAll('input, textarea, select');
         
-        inputs.forEach(input => {
-            input.addEventListener('input', () => {
-                clearTimeout(updateTimeout);
-                updateTimeout = setTimeout(updateFormPreview, 800);
+        function attachEventListeners() {
+            const inputs = document.querySelectorAll('#form-eyebrow, #form-headline, #form-subheadline, #submit-text, #privacy-text, #success-eyebrow, #success-headline, #success-description, #contact-email, #accent-color, #question-1, #question-1-options, #question-2, #question-2-options, #required-fields');
+            
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    clearTimeout(updateTimeout);
+                    updateTimeout = setTimeout(updateFormPreview, 300); // Faster response
+                });
+                input.addEventListener('change', () => {
+                    clearTimeout(updateTimeout);
+                    updateTimeout = setTimeout(updateFormPreview, 100); // Even faster for dropdowns
+                });
             });
-        });
+            
+            console.log('Event listeners attached to', inputs.length, 'inputs');
+        }
         
         // Initialize
-        document.addEventListener('DOMContentLoaded', updateFormPreview);
+        document.addEventListener('DOMContentLoaded', () => {
+            attachEventListeners();
+            updateFormPreview(); // Initial load
+        });
     </script>
 </body>
 </html>
