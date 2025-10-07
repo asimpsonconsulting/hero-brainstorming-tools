@@ -441,6 +441,25 @@
                 </div>
                 
                 <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
+                    <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">📋 Form Fields</h3>
+                    
+                    <div class="form-group">
+                        <label>Required Fields (select multiple)</label>
+                        <select id="required-fields" multiple style="height: 140px;">
+                            <option value="first-name" selected>First Name</option>
+                            <option value="last-name" selected>Last Name</option>
+                            <option value="email" selected>Work Email</option>
+                            <option value="company" selected>Company Name</option>
+                            <option value="title">Job Title</option>
+                            <option value="phone">Phone Number</option>
+                            <option value="website">Website URL</option>
+                            <option value="team-size">Team Size</option>
+                            <option value="revenue">Annual Revenue</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
                     <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">❓ Qualifying Questions</h3>
                     
                     <div class="form-group">
@@ -485,27 +504,77 @@ Other</textarea>
                         
                         <form class="lead-form">
                             <div class="form-row two-col">
-                                <div class="field-group">
+                                <div class="field-group" data-field="first-name">
                                     <label class="field-label">First Name *</label>
                                     <input type="text" class="field-input" placeholder="John" required>
                                 </div>
-                                <div class="field-group">
+                                <div class="field-group" data-field="last-name">
                                     <label class="field-label">Last Name *</label>
                                     <input type="text" class="field-input" placeholder="Smith" required>
                                 </div>
                             </div>
                             
                             <div class="form-row">
-                                <div class="field-group">
+                                <div class="field-group" data-field="email">
                                     <label class="field-label">Work Email *</label>
                                     <input type="email" class="field-input" placeholder="john.smith@company.com" required>
                                 </div>
                             </div>
                             
                             <div class="form-row">
-                                <div class="field-group">
+                                <div class="field-group" data-field="company">
                                     <label class="field-label">Company *</label>
                                     <input type="text" class="field-input" placeholder="Acme Corp" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Optional Fields -->
+                            <div class="form-row" data-field="title" style="display: none;">
+                                <div class="field-group">
+                                    <label class="field-label">Job Title</label>
+                                    <input type="text" class="field-input" placeholder="VP of Sales">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row" data-field="phone" style="display: none;">
+                                <div class="field-group">
+                                    <label class="field-label">Phone Number</label>
+                                    <input type="tel" class="field-input" placeholder="(555) 123-4567">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row" data-field="website" style="display: none;">
+                                <div class="field-group">
+                                    <label class="field-label">Website URL</label>
+                                    <input type="url" class="field-input" placeholder="https://company.com">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row" data-field="team-size" style="display: none;">
+                                <div class="field-group">
+                                    <label class="field-label">Team Size</label>
+                                    <select class="field-input">
+                                        <option>Select team size</option>
+                                        <option>1-10 employees</option>
+                                        <option>11-50 employees</option>
+                                        <option>51-200 employees</option>
+                                        <option>201-500 employees</option>
+                                        <option>500+ employees</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row" data-field="revenue" style="display: none;">
+                                <div class="field-group">
+                                    <label class="field-label">Annual Revenue</label>
+                                    <select class="field-input">
+                                        <option>Select revenue range</option>
+                                        <option>Under $1M</option>
+                                        <option>$1M - $5M</option>
+                                        <option>$5M - $25M</option>
+                                        <option>$25M - $100M</option>
+                                        <option>$100M+</option>
+                                    </select>
                                 </div>
                             </div>
                             
@@ -587,6 +656,33 @@ Other</textarea>
                     formContainer.classList.add('accent-blue');
                 }
             });
+            
+            // Handle field visibility based on selection
+            const selectedFields = Array.from(document.getElementById('required-fields').selectedOptions).map(option => option.value);
+            const allFieldOptions = ['first-name', 'last-name', 'email', 'company', 'title', 'phone', 'website', 'team-size', 'revenue'];
+            
+            allFieldOptions.forEach(field => {
+                const fieldElements = document.querySelectorAll('[data-field="' + field + '"]');
+                fieldElements.forEach(element => {
+                    if (selectedFields.includes(field)) {
+                        element.style.display = 'block';
+                    } else {
+                        element.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Handle two-column layout for first/last name
+            const nameRow = document.querySelector('.form-row.two-col');
+            if (selectedFields.includes('first-name') && selectedFields.includes('last-name')) {
+                nameRow.style.display = 'grid';
+                nameRow.style.gridTemplateColumns = '1fr 1fr';
+            } else if (selectedFields.includes('first-name') || selectedFields.includes('last-name')) {
+                nameRow.style.display = 'grid';
+                nameRow.style.gridTemplateColumns = '1fr';
+            } else {
+                nameRow.style.display = 'none';
+            }
             
             // Handle qualifying questions
             const question1 = document.getElementById('question-1').value;
@@ -752,7 +848,7 @@ Other</textarea>
         let updateTimeout;
         
         function attachEventListeners() {
-            const inputs = document.querySelectorAll('#form-eyebrow, #form-headline, #form-subheadline, #submit-text, #privacy-text, #success-eyebrow, #success-headline, #success-description, #contact-email, #accent-color, #question-1, #question-1-options');
+            const inputs = document.querySelectorAll('#form-eyebrow, #form-headline, #form-subheadline, #submit-text, #privacy-text, #success-eyebrow, #success-headline, #success-description, #contact-email, #accent-color, #question-1, #question-1-options, #required-fields');
             
             inputs.forEach(input => {
                 input.addEventListener('input', () => {
