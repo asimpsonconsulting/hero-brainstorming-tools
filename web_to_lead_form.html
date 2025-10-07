@@ -464,10 +464,10 @@ Other</textarea>
                 
                 <button class="update-btn" onclick="updateFormPreview()">✨ Update Form</button>
                 
-                <button class="download-btn" onclick="downloadScreenshot()">📸 Save Screenshot</button>
+                <button class="download-btn" onclick="downloadCompletePackage()">📦 Download Complete Package</button>
                 
                 <div class="business-impact">
-                    <strong>Why this matters:</strong> Form optimization can increase lead conversion by 25-40%. Test different headlines, field combinations, accent colors, and layouts to find what converts best.
+                    <strong>Why this matters:</strong> Form optimization can increase lead conversion by 25-40%. Test different headlines, field combinations, accent colors, and layouts to find what converts best. Complete package includes: form screenshot, configuration JSON, HTML template, and Salesforce setup instructions.
                 </div>
             </div>
             
@@ -622,13 +622,16 @@ Other</textarea>
             }
         }
         
-        // Download screenshot (working version)
-        async function downloadScreenshot() {
+        // Download complete package (simplified but complete)
+        async function downloadCompletePackage() {
             const button = document.querySelector('.download-btn');
-            button.textContent = '📸 Taking Screenshot...';
+            button.textContent = '📦 Creating Package...';
             button.disabled = true;
             
             try {
+                const date = new Date().toISOString().slice(0, 10);
+                
+                // 1. Download Screenshot
                 const formPreview = document.querySelector('.form-variations');
                 const canvas = await html2canvas(formPreview, {
                     scale: 1,
@@ -636,28 +639,110 @@ Other</textarea>
                     backgroundColor: '#f9fafb'
                 });
                 
-                const date = new Date().toISOString().slice(0, 10);
-                const link = document.createElement('a');
-                link.download = 'oneview-form-preview-' + date + '.png';
-                link.href = canvas.toDataURL();
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                const screenshotLink = document.createElement('a');
+                screenshotLink.download = 'oneview-form-preview-' + date + '.png';
+                screenshotLink.href = canvas.toDataURL();
+                document.body.appendChild(screenshotLink);
+                screenshotLink.click();
+                document.body.removeChild(screenshotLink);
                 
-                button.textContent = '✅ Screenshot Downloaded!';
+                // 2. Download Form Configuration (JSON)
+                const formConfig = {
+                    eyebrow: document.getElementById('form-eyebrow').value,
+                    headline: document.getElementById('form-headline').value,
+                    subheadline: document.getElementById('form-subheadline').value,
+                    submitText: document.getElementById('submit-text').value,
+                    privacyText: document.getElementById('privacy-text').value,
+                    accentColor: document.getElementById('accent-color').value,
+                    successEyebrow: document.getElementById('success-eyebrow').value,
+                    successHeadline: document.getElementById('success-headline').value,
+                    successDescription: document.getElementById('success-description').value,
+                    contactEmail: document.getElementById('contact-email').value,
+                    question1: document.getElementById('question-1').value,
+                    question1Options: document.getElementById('question-1-options').value,
+                    generatedDate: date
+                };
+                
+                const configBlob = new Blob([JSON.stringify(formConfig, null, 2)], { type: 'application/json' });
+                const configUrl = URL.createObjectURL(configBlob);
+                const configLink = document.createElement('a');
+                configLink.download = 'oneview-form-config-' + date + '.json';
+                configLink.href = configUrl;
+                document.body.appendChild(configLink);
+                configLink.click();
+                document.body.removeChild(configLink);
+                URL.revokeObjectURL(configUrl);
+                
+                // 3. Download HTML Template Instructions
+                const htmlInstructions = 'OneView Web-to-Lead Form HTML Template\\n\\n' +
+                    'Use this configuration with your HTML template:\\n\\n' +
+                    '1. Form Headline: ' + formConfig.headline + '\\n' +
+                    '2. Form Eyebrow: ' + formConfig.eyebrow + '\\n' +
+                    '3. Submit Button: ' + formConfig.submitText + '\\n' +
+                    '4. Accent Color: ' + formConfig.accentColor + '\\n' +
+                    '5. Privacy Text: ' + formConfig.privacyText + '\\n\\n' +
+                    'Success Page Configuration:\\n' +
+                    '- Success Eyebrow: ' + formConfig.successEyebrow + '\\n' +
+                    '- Success Headline: ' + formConfig.successHeadline + '\\n' +
+                    '- Success Description: ' + formConfig.successDescription + '\\n' +
+                    '- Contact Email: ' + formConfig.contactEmail + '\\n\\n' +
+                    (formConfig.question1 ? 'Qualifying Question: ' + formConfig.question1 + '\\nOptions: ' + formConfig.question1Options.split('\\n').join(', ') + '\\n\\n' : '') +
+                    'Generated: ' + date + ' from OneView ToolKit';
+                
+                const htmlBlob = new Blob([htmlInstructions], { type: 'text/plain' });
+                const htmlUrl = URL.createObjectURL(htmlBlob);
+                const htmlLink = document.createElement('a');
+                htmlLink.download = 'oneview-form-config-' + date + '.txt';
+                htmlLink.href = htmlUrl;
+                document.body.appendChild(htmlLink);
+                htmlLink.click();
+                document.body.removeChild(htmlLink);
+                URL.revokeObjectURL(htmlUrl);
+                
+                // 4. Download Salesforce Instructions
+                const instructions = '# OneView Web-to-Lead Form - Salesforce Setup Instructions\\n\\n' +
+                    '## Lead Assignment Setup\\n' +
+                    '- Lead Owner: David Bresears\\n' +
+                    '- Notifications: David Bresears, Sean Lee, Remington Rawlings\\n' +
+                    '- Lead Source: Website Contact Form\\n' +
+                    '- Daily Limit: 500 submissions\\n\\n' +
+                    '## Form Configuration (from JSON file)\\n' +
+                    '- Headline: ' + formConfig.headline + '\\n' +
+                    '- CTA: ' + formConfig.submitText + '\\n' +
+                    '- Accent Color: ' + formConfig.accentColor + '\\n' +
+                    (formConfig.question1 ? '- Qualifying Question: ' + formConfig.question1 + '\\n' : '') +
+                    '\\n## Setup Steps\\n' +
+                    '1. Enable Web-to-Lead in Salesforce\\n' +
+                    '2. Create assignment rule for David Bresears\\n' +
+                    '3. Set up team notifications\\n' +
+                    '4. Upload HTML files to web server\\n' +
+                    '5. Test complete flow\\n\\n' +
+                    'Generated: ' + date + ' from OneView ToolKit';
+                
+                const instructionsBlob = new Blob([instructions], { type: 'text/markdown' });
+                const instructionsUrl = URL.createObjectURL(instructionsBlob);
+                const instructionsLink = document.createElement('a');
+                instructionsLink.download = 'salesforce-setup-' + date + '.md';
+                instructionsLink.href = instructionsUrl;
+                document.body.appendChild(instructionsLink);
+                instructionsLink.click();
+                document.body.removeChild(instructionsLink);
+                URL.revokeObjectURL(instructionsUrl);
+                
+                button.textContent = '✅ Complete Package Downloaded! (4 files)';
                 button.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
                 
                 setTimeout(() => {
-                    button.textContent = '📸 Save Screenshot';
+                    button.textContent = '📦 Download Complete Package';
                     button.style.background = 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)';
                     button.disabled = false;
-                }, 2000);
+                }, 3000);
                 
             } catch (error) {
-                console.error('Download failed:', error);
+                console.error('Package creation failed:', error);
                 button.textContent = '❌ Error - Try Again';
                 setTimeout(() => {
-                    button.textContent = '📸 Save Screenshot';
+                    button.textContent = '📦 Download Complete Package';
                     button.disabled = false;
                 }, 2000);
             }
