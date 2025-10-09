@@ -130,6 +130,34 @@
             resize: vertical;
         }
         
+        /* Checkbox styling for Additional Fields */
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0;
+            padding: 0;
+        }
+        
+        .checkbox-input {
+            width: auto !important;
+            flex-shrink: 0;
+            margin: 0 8px 0 0;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+            min-width: 16px;
+        }
+        
+        .checkbox-text {
+            flex: 1;
+            text-align: left;
+        }
+        
         .update-btn {
             width: 100%;
             background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
@@ -447,16 +475,16 @@
                     <h3 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 15px;">📋 Additional Fields</h3>
                     
                     <div class="form-group">
-                        <label style="display: flex; align-items: center; cursor: pointer; justify-content: flex-start;">
-                            <input type="checkbox" id="include-phone" style="margin-right: 12px;">
-                            <span>Phone Number</span>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="include-phone" class="checkbox-input">
+                            <span class="checkbox-text">Phone Number</span>
                         </label>
                     </div>
                     
                     <div class="form-group">
-                        <label style="display: flex; align-items: center; cursor: pointer; justify-content: flex-start;">
-                            <input type="checkbox" id="include-title" style="margin-right: 12px;">
-                            <span>Job Title</span>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="include-title" class="checkbox-input">
+                            <span class="checkbox-text">Job Title</span>
                         </label>
                     </div>
                 </div>
