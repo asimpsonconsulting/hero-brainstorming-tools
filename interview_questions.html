@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Questions - OneView ToolKit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f9fafb;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .guide-header {
+            text-align: center;
+            margin-bottom: 25px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .guide-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1f2937;
+        }
+        
+        .guide-header p {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 15px;
+        }
+        
+        .navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            padding: 8px 16px;
+            background: #f3f4f6;
+            color: #6b7280;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+        
+        .main-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .control-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+        
+        .control-panel h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+        
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        
+        .form-group select:focus, .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        
+        .download-section {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        
+        .download-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        
+        .screenshot-btn {
+            background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
+            box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
+        }
+        
+        .screenshot-btn:hover {
+            box-shadow: 0 6px 16px rgba(107, 114, 128, 0.4);
+        }
+        
+        .business-impact {
+            background: #dbeafe;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #1e40af;
+        }
+        
+        .content-area {
+            background: white;
+            border-radius: 16px;
+            padding: 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .content-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+        }
+        
+        .content-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .content-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .interview-content {
+            padding: 30px;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+        
+        .interview-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .interview-question {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .question-text {
+            padding: 15px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1f2937;
+            line-height: 1.5;
+        }
+        
+        .question-notes {
+            background: #f1f5f9;
+            padding: 12px 20px;
+            font-size: 13px;
+            color: #64748b;
+            font-style: italic;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .transition-statement {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 6px;
+            padding: 12px 15px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #92400e;
+            font-weight: 500;
+        }
+        
+        .transition-statement::before {
+            content: "🔄 ";
+            margin-right: 5px;
+        }
+        
+        .pre-interview {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .pre-interview h3 {
+            color: #065f46;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .pre-interview ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .pre-interview li {
+            padding: 5px 0;
+            color: #059669;
+            font-size: 14px;
+        }
+        
+        .pre-interview li::before {
+            content: "☐ ";
+            margin-right: 8px;
+            color: #10b981;
+        }
+        
+        .opening-frame {
+            background: #fef7ff;
+            border: 1px solid #e879f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .opening-frame h3 {
+            color: #86198f;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .opening-frame p {
+            color: #a21caf;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .select-role-prompt {
+            text-align: center;
+            padding: 60px 40px;
+            color: #6b7280;
+        }
+        
+        .select-role-prompt h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #374151;
+        }
+        
+        .select-role-prompt p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 1200px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .control-panel {
+                position: relative;
+                max-height: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .interview-content {
+                padding: 20px;
+            }
+            
+            .question-text {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+            
+            .question-notes {
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="guide-header">
+            <h1>🚚 Interview Questions</h1>
+            <p>Comprehensive role-specific interview frameworks with structured formats and organized delivery</p>
+            <div class="navigation">
+                <a href="index.html" class="nav-link">← OneView ToolKit</a>
+                <a href="style_guide_hub.html" class="nav-link">📚 Style Guide</a>
+            </div>
+        </div>
+        
+        <div class="main-layout">
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <h2>🎯 Interview Configuration</h2>
+                
+                <div class="form-group">
+                    <label>Select Role</label>
+                    <select id="role-selector">
+                        <option value="">Choose an interview role...</option>
+                        <option value="abm-manager">Account-Based Marketing (ABM) Manager</option>
+                        <option value="bdr-operations">BDR Operations</option>
+                        <option value="bdr-manager">BDR/SDR Manager</option>
+                        <option value="bdr-sdr">Business Development Representative (BDR/SDR)</option>
+                        <option value="chief-of-staff">Chief of Staff & Sales Leader</option>
+                        <option value="director-growth">Director of Enterprise Growth</option>
+                        <option value="marketing-ops">Marketing Operations</option>
+                        <option value="rvp-enterprise">Regional Vice President of Enterprise Sales</option>
+                        <option value="revenue-enablement">Revenue Enablement</option>
+                        <option value="sales-director">Sales Director / Account Executive (AE)</option>
+                        <option value="sales-operations">Sales/Revenue/Field Operations</option>
+                        <option value="solutions-architect">Senior Business Solutions Architect</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Quick Search</label>
+                    <input type="text" id="role-search" placeholder="Type to search roles...">
+                </div>
+                
+                <div class="download-section">
+                    <h3 style="font-size: 16px; font-weight: 600; color: #374151; margin-bottom: 15px;">📥 Download Options</h3>
+                    
+                    <button class="download-btn" onclick="downloadSingleRole()" id="download-single" disabled>
+                        📋 Download This Role
+                    </button>
+                    
+                    <button class="download-btn" onclick="downloadBySection()">
+                        📦 Download by Section (5 files)
+                    </button>
+                    
+                    <button class="download-btn" onclick="downloadCompleteGuide()">
+                        📚 Download Complete Guide
+                    </button>
+                    
+                    <button class="download-btn screenshot-btn" onclick="takeScreenshot()">
+                        📸 Save Screenshot
+                    </button>
+                </div>
+                
+                <div class="business-impact">
+                    <strong>Why this matters:</strong> Structured interviews improve hiring success by 70%. These frameworks provide comprehensive coverage while maintaining consistency across different interviewers and roles.
+                </div>
+            </div>
+            
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="content-header">
+                    <h2 id="content-title">Interview Questions Framework</h2>
+                    <p id="content-subtitle">Select a role to view comprehensive interview questions</p>
+                </div>
+                
+                <div class="interview-content" id="interview-content">
+                    <div class="select-role-prompt">
+                        <h3>Ready to Start?</h3>
+                        <p>Choose a role from the dropdown menu to view comprehensive interview questions, transition statements, and structured frameworks designed for consistent, effective interviews.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interview data structure
+        const interviewData = {
+            'bdr-sdr': {
+                title: 'Business Development Representative (BDR/SDR)',
+                duration: '45-50 minutes',
+                focusAreas: 'Prospecting success patterns, sequence execution, daily workflow optimization, capacity management',
+                preInterview: [
+                    'Review their territory/quota if known',
+                    'Check sequence performance data if available',
+                    'Emphasize this is about learning from their expertise'
+                ],
+                openingFrame: {
+                    tone: '(Warm and supportive tone)',
+                    text: '"You\'re doing the hardest job in sales - getting people who don\'t know us to pay attention and want to learn more. I\'d love to understand what\'s working well for you and where we can make your day-to-day easier and more successful."'
+                },
+                sections: [
+                    {
+                        title: 'Section 1: Success Patterns & Energy (5-7 minutes)',
+                        transition: 'Let\'s start with the good stuff...',
+                        questions: [
+                            {
+                                text: 'When you\'re having a great week and hitting your numbers, what\'s working for you?',
+                                notes: 'Success Patterns: What activities/approaches drive their best performance?'
+                            },
+                            {
+                                text: 'What do you think you do differently that helps you get prospects to actually respond?',
+                                notes: 'Response Differentiators: Their unique approaches that generate engagement'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Section 2: Daily Workflow & Productivity (6-8 minutes)',
+                        transition: 'Walk me through what a really productive day looks like from start to finish.',
+                        questions: [
+                            {
+                                text: 'From start to finish.',
+                                notes: 'Daily Structure: How they organize their day for maximum productivity'
+                            },
+                            {
+                                text: 'When you\'re building your prospect lists, how do you decide who to target? What\'s your process?',
+                                notes: 'Targeting Process: Their methodology for prospect selection'
+                            },
+                            {
+                                text: 'What activities take up most of your time during the day?',
+                                notes: 'Time Allocation: How they currently spend their working hours'
+                            },
+                            {
+                                text: 'Where do you feel like your time gets wasted or could be used better?',
+                                notes: 'Time Waste Areas: Activities that feel inefficient or unnecessary'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Section 3: Sequences & Tools (8-10 minutes)',
+                        transition: 'Let\'s talk about the sequences you use...',
+                        questions: [
+                            {
+                                text: 'Which ones have become your favorites?',
+                                notes: 'Preferred Sequences: Which sequences they gravitate toward and why'
+                            },
+                            {
+                                text: 'What makes those sequences work better than others for you?',
+                                notes: 'Sequence Success Factors: Why certain sequences are more effective'
+                            },
+                            {
+                                text: 'I\'ve heard that getting prospects to step 7 and beyond is where the magic happens. When that works well, what do you think creates that momentum?',
+                                notes: 'Step 7+ Success Factors: Critical insights about sequence continuation and conversion'
+                            },
+                            {
+                                text: 'How do you decide which sequence to use for different types of prospects?',
+                                notes: 'Sequence Selection Process: Their decision framework for sequence choice'
+                            }
+                        ]
+                    }
+                ]
+            },
+            'abm-manager': {
+                title: 'Account-Based Marketing (ABM) Manager',
+                duration: '45-50 minutes',
+                focusAreas: 'Account targeting strategy, campaign coordination, sales alignment, multi-product ABM approach, performance measurement',
+                preInterview: [
+                    'Review their ABM program scope and account focus',
+                    'Check team size and structure if available',
+                    'Note: ABM sits between marketing and sales - expect cross-functional perspective'
+                ],
+                openingFrame: {
+                    tone: '(Strategic but execution-focused)',
+                    text: '"You\'re sitting at this really interesting intersection of strategic targeting and tactical execution - figuring out which accounts matter most and how to get them engaged. I\'d love to understand what\'s been working well for you in ABM and where you see opportunities to make account targeting and engagement even more effective."'
+                },
+                sections: [
+                    {
+                        title: 'Section 1: ABM Success & Strategic Approach (6-8 minutes)',
+                        transition: 'Let\'s start with what\'s working...',
+                        questions: [
+                            {
+                                text: 'When you think about your best ABM wins, what made those accounts successful?',
+                                notes: 'Success Patterns: What conditions/factors led to their ABM wins?'
+                            },
+                            {
+                                text: 'What first signals told you those accounts were worth that level of investment?',
+                                notes: 'Account Intelligence: How they identify high-value targets'
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Role search functionality
+        document.getElementById('role-search').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const select = document.getElementById('role-selector');
+            const options = select.querySelectorAll('option');
+            
+            options.forEach(option => {
+                if (option.value === '') return;
+                const text = option.textContent.toLowerCase();
+                option.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        // Role selection handler
+        document.getElementById('role-selector').addEventListener('change', function(e) {
+            const selectedRole = e.target.value;
+            if (selectedRole) {
+                loadInterviewContent(selectedRole);
+                document.getElementById('download-single').disabled = false;
+            } else {
+                showSelectPrompt();
+                document.getElementById('download-single').disabled = true;
+            }
+        });
+
+        function showSelectPrompt() {
+            document.getElementById('content-title').textContent = 'Interview Questions Framework';
+            document.getElementById('content-subtitle').textContent = 'Select a role to view comprehensive interview questions';
+            document.getElementById('interview-content').innerHTML = `
+                <div class="select-role-prompt">
+                    <h3>Ready to Start?</h3>
+                    <p>Choose a role from the dropdown menu to view comprehensive interview questions, transition statements, and structured frameworks designed for consistent, effective interviews.</p>
+                </div>
+            `;
+        }
+
+        function loadInterviewContent(roleKey) {
+            const role = interviewData[roleKey];
+            if (!role) return;
+
+            document.getElementById('content-title').textContent = role.title;
+            document.getElementById('content-subtitle').textContent = `${role.duration} • ${role.focusAreas}`;
+            
+            let contentHTML = '';
+            
+            // Pre-Interview Setup
+            if (role.preInterview) {
+                contentHTML += `
+                    <div class="pre-interview">
+                        <h3>Pre-Interview Setup</h3>
+                        <ul>
+                            ${role.preInterview.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Opening Frame
+            if (role.openingFrame) {
+                contentHTML += `
+                    <div class="opening-frame">
+                        <h3>Opening Frame ${role.openingFrame.tone || ''}</h3>
+                        <p>${role.openingFrame.text}</p>
+                    </div>
+                `;
+            }
+            
+            // Interview Sections
+            if (role.sections) {
+                role.sections.forEach(section => {
+                    contentHTML += `
+                        <div class="interview-section">
+                            <div class="section-title">${section.title}</div>
+                            ${section.transition ? `<div class="transition-statement">${section.transition}</div>` : ''}
+                            ${section.questions.map(q => `
+                                <div class="interview-question">
+                                    <div class="question-text">${q.text}</div>
+                                    <div class="question-notes">📝 NOTES - ${q.notes}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+            }
+            
+            // If no sections available, show placeholder
+            if (!role.sections || role.sections.length === 0) {
+                contentHTML += `
+                    <p style="text-align: center; color: #6b7280; font-style: italic; margin-top: 40px;">
+                        Complete interview framework for this role is being prepared. The structured content will include all sections, questions, transitions, and note-taking areas.
+                    </p>
+                `;
+            }
+            
+            document.getElementById('interview-content').innerHTML = contentHTML;
+        }
+
+        // Download functions
+        function downloadSingleRole() {
+            const selectedRole = document.getElementById('role-selector').value;
+            if (!selectedRole) return;
+
+            const role = interviewData[selectedRole];
+            if (!role) return;
+
+            // Create markdown content
+            const markdown = generateMarkdownForRole(role);
+            downloadMarkdown(markdown, `interview-questions-${selectedRole}.md`);
+        }
+
+        function downloadBySection() {
+            // Download all 5 section files
+            const sections = [
+                'Individual Contributors',
+                'Marketing', 
+                'Operations & Enablement',
+                'People Management',
+                'Sales Leadership & Management'
+            ];
+            
+            // This would trigger downloads for each section
+            alert('Feature coming soon: Download by section (5 separate files)');
+        }
+
+        function downloadCompleteGuide() {
+            // Generate complete guide with all roles
+            alert('Feature coming soon: Download complete guide with all roles');
+        }
+
+        function takeScreenshot() {
+            const content = document.querySelector('.content-area');
+            const button = event.target;
+            
+            button.textContent = '📸 Taking Screenshot...';
+            button.disabled = true;
+            
+            html2canvas(content, {
+                scale: 1,
+                useCORS: true,
+                backgroundColor: '#f9fafb'
+            }).then(canvas => {
+                const date = new Date().toISOString().slice(0, 10);
+                const link = document.createElement('a');
+                link.download = `oneview-interview-questions-${date}.png`;
+                link.href = canvas.toDataURL();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                button.textContent = '✅ Screenshot Saved!';
+                setTimeout(() => {
+                    button.textContent = '📸 Save Screenshot';
+                    button.disabled = false;
+                }, 2000);
+            }).catch(error => {
+                console.error('Screenshot failed:', error);
+                button.textContent = '❌ Error - Try Again';
+                setTimeout(() => {
+                    button.textContent = '📸 Save Screenshot';
+                    button.disabled = false;
+                }, 2000);
+            });
+        }
+
+        function generateMarkdownForRole(role) {
+            let markdown = `# Interview Questions: ${role.title}
+
+**Duration:** ${role.duration}  
+**Focus Areas:** ${role.focusAreas}
+
+---
+
+`;
+
+            // Pre-Interview Setup
+            if (role.preInterview) {
+                markdown += `## Pre-Interview Setup\n\n`;
+                role.preInterview.forEach(item => {
+                    markdown += `- [ ] ${item}\n`;
+                });
+                markdown += '\n';
+            }
+
+            // Opening Frame
+            if (role.openingFrame) {
+                markdown += `## Opening Frame ${role.openingFrame.tone || ''}\n\n`;
+                markdown += `${role.openingFrame.text}\n\n---\n\n`;
+            }
+
+            // Interview Sections
+            if (role.sections) {
+                role.sections.forEach(section => {
+                    markdown += `## ${section.title}\n\n`;
+                    
+                    if (section.transition) {
+                        markdown += `**🔄 TRANSITION:** *${section.transition}*\n\n`;
+                    }
+                    
+                    section.questions.forEach(q => {
+                        markdown += `**"${q.text}"**\n\n`;
+                        markdown += `**📝 NOTES - ${q.notes}**\n\n`;
+                    });
+                    
+                    markdown += '---\n\n';
+                });
+            }
+
+            markdown += `## Post-Interview Summary
+
+### Key Insights:
+1. **Primary Success Driver:**
+2. **Biggest Challenge:**
+3. **Most Critical Resource Need:**
+4. **Key Process Improvement:**
+
+### Follow-up Actions:
+- [ ] Specific examples to review
+- [ ] Process improvements to consider
+- [ ] Additional questions to explore
+
+*Generated by OneView ToolKit Interview Questions - ${new Date().toISOString().slice(0, 10)}*
+`;
+
+            return markdown;
+        }
+
+        function downloadMarkdown(content, filename) {
+            const blob = new Blob([content], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = url;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            showSelectPrompt();
+        });
+    </script>
+</body>
+</html>

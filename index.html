@@ -87,6 +87,7 @@
         }
         
         .marketing-icon { background: linear-gradient(135deg, #f97316 0%, #ef4444 100%); }
+        .delivery-icon { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); }
         .sales-icon { background: linear-gradient(135deg, #22c55e 0%, #10b981 100%); }
         .dev-icon { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); }
         .ops-icon { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); }
@@ -149,6 +150,9 @@
             transform: none;
             box-shadow: none;
         }
+        
+        .tool-card.delivery { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+        .tool-card.delivery:hover { box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4); }
         
         .tool-card.sales { background: linear-gradient(135deg, #22c55e 0%, #10b981 100%); box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3); }
         .tool-card.sales:hover { box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4); }
@@ -263,6 +267,27 @@
                     <div class="tool-card placeholder">
                         <h3>Future Shared Resource</h3>
                         <p>Additional shared resources and templates coming soon</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Delivery Tools -->
+            <div class="department-section">
+                <div class="department-header">
+                    <div class="dept-icon delivery-icon">🚚</div>
+                    <div>
+                        <div class="department-title">Delivery Tools</div>
+                        <div class="department-desc">Interview frameworks, assessment tools, and structured delivery processes</div>
+                    </div>
+                </div>
+                <div class="tools-grid">
+                    <a href="interview_questions.html" class="tool-card delivery">
+                        <h3>Interview Questions</h3>
+                        <p>Comprehensive role-specific interview frameworks with structured formats and organized delivery</p>
+                    </a>
+                    <div class="tool-card placeholder">
+                        <h3>Future Delivery Tool</h3>
+                        <p>Additional delivery tools and processes coming soon</p>
                     </div>
                 </div>
             </div>
