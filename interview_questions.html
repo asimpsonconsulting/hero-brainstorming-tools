@@ -170,6 +170,24 @@
             color: #1e40af;
         }
         
+        .search-option {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+            color: #374151;
+        }
+        
+        .search-option:hover {
+            background: #e2e8f0;
+            border-color: #3b82f6;
+            color: #1f2937;
+        }
+        
         .content-area {
             background: white;
             border-radius: 16px;
@@ -392,6 +410,8 @@
                 <div class="form-group">
                     <label>Quick Search</label>
                     <input type="text" id="role-search" placeholder="Type to search roles...">
+                    <div id="search-results" style="font-size: 12px; color: #6b7280; margin-top: 5px; min-height: 16px;"></div>
+                    <div id="search-options" style="margin-top: 8px;"></div>
                 </div>
                 
                 <div class="download-section">
@@ -2627,18 +2647,106 @@
             }
         };
 
-        // Role search functionality
+        // Role search functionality with clickable results
         document.getElementById('role-search').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
+            const searchTerm = e.target.value.toLowerCase().trim();
             const select = document.getElementById('role-selector');
-            const options = select.querySelectorAll('option');
+            const resultsDiv = document.getElementById('search-results');
+            const searchOptionsDiv = document.getElementById('search-options');
+            const originalOptions = [
+                {value: 'abm-manager', text: 'Account-Based Marketing (ABM) Manager'},
+                {value: 'sales-director', text: 'Account Executive/ Sales Director'},
+                {value: 'bdr-sdr', text: 'BDR/SDR Individual Contributor'},
+                {value: 'bdr-manager', text: 'BDR/SDR Manager'},
+                {value: 'solutions-architect', text: 'Business Solutions Architect'},
+                {value: 'director-growth', text: 'Director of Sales/ Director of Enterprise Growth'},
+                {value: 'bdr-operations', text: 'Operations - BDR Operations'},
+                {value: 'marketing-ops', text: 'Operations - Marketing'},
+                {value: 'sales-operations', text: 'Operations - Sales/Revenue/Field'},
+                {value: 'revenue-enablement', text: 'Revenue Enablement'},
+                {value: 'chief-of-staff', text: 'Sales Leader/Chief of Staff'},
+                {value: 'rvp-enterprise', text: 'VP Sales/Enterprise Sales/Growth'}
+            ];
             
-            options.forEach(option => {
-                if (option.value === '') return;
-                const text = option.textContent.toLowerCase();
-                option.style.display = text.includes(searchTerm) ? '' : 'none';
+            if (searchTerm === '') {
+                // Reset everything when search is empty
+                select.innerHTML = `
+                    <option value="">Choose an interview role...</option>
+                    <option value="abm-manager">Account-Based Marketing (ABM) Manager</option>
+                    <option value="sales-director">Account Executive/ Sales Director</option>
+                    <option value="bdr-sdr">BDR/SDR Individual Contributor</option>
+                    <option value="bdr-manager">BDR/SDR Manager</option>
+                    <option value="solutions-architect">Business Solutions Architect</option>
+                    <option value="director-growth">Director of Sales/ Director of Enterprise Growth</option>
+                    <option value="bdr-operations">Operations - BDR Operations</option>
+                    <option value="marketing-ops">Operations - Marketing</option>
+                    <option value="sales-operations">Operations - Sales/Revenue/Field</option>
+                    <option value="revenue-enablement">Revenue Enablement</option>
+                    <option value="chief-of-staff">Sales Leader/Chief of Staff</option>
+                    <option value="rvp-enterprise">VP Sales/Enterprise Sales/Growth</option>
+                `;
+                resultsDiv.innerHTML = '';
+                searchOptionsDiv.innerHTML = '';
+                return;
+            }
+            
+            const filteredOptions = originalOptions.filter(option => 
+                option.text.toLowerCase().includes(searchTerm)
+            );
+            
+            // Update dropdown with filtered options
+            select.innerHTML = '<option value="">Choose an interview role...</option>';
+            filteredOptions.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.value = option.value;
+                optionElement.textContent = option.text;
+                select.appendChild(optionElement);
             });
+            
+            // Show visual search results as clickable options
+            if (filteredOptions.length === 0) {
+                resultsDiv.innerHTML = `<span style="color: #ef4444;">No roles found for "${searchTerm}"</span>`;
+                searchOptionsDiv.innerHTML = `<div style="font-size: 12px; color: #6b7280; padding: 10px; background: #f9fafb; border-radius: 6px;">Try searching for: "Operations", "BDR", "Sales", "Marketing", "Director", "Manager"</div>`;
+            } else {
+                resultsDiv.innerHTML = `<span style="color: #22c55e;">Found ${filteredOptions.length} role${filteredOptions.length > 1 ? 's' : ''} - click to select:</span>`;
+                
+                // Create clickable search result buttons
+                searchOptionsDiv.innerHTML = filteredOptions.map(option => 
+                    `<div class="search-option" onclick="selectRoleFromSearch('${option.value}')">${option.text}</div>`
+                ).join('');
+            }
         });
+
+        // Function to select role from search results
+        function selectRoleFromSearch(roleKey) {
+            const select = document.getElementById('role-selector');
+            select.value = roleKey;
+            loadInterviewContent(roleKey);
+            document.getElementById('download-single').disabled = false;
+            
+            // Clear search
+            document.getElementById('role-search').value = '';
+            document.getElementById('search-results').innerHTML = '';
+            document.getElementById('search-options').innerHTML = '';
+            
+            // Reset dropdown to show all options
+            select.innerHTML = `
+                <option value="">Choose an interview role...</option>
+                <option value="abm-manager">Account-Based Marketing (ABM) Manager</option>
+                <option value="sales-director">Account Executive/ Sales Director</option>
+                <option value="bdr-sdr">BDR/SDR Individual Contributor</option>
+                <option value="bdr-manager">BDR/SDR Manager</option>
+                <option value="solutions-architect">Business Solutions Architect</option>
+                <option value="director-growth">Director of Sales/ Director of Enterprise Growth</option>
+                <option value="bdr-operations">Operations - BDR Operations</option>
+                <option value="marketing-ops">Operations - Marketing</option>
+                <option value="sales-operations">Operations - Sales/Revenue/Field</option>
+                <option value="revenue-enablement">Revenue Enablement</option>
+                <option value="chief-of-staff">Sales Leader/Chief of Staff</option>
+                <option value="rvp-enterprise">VP Sales/Enterprise Sales/Growth</option>
+            `;
+            select.value = roleKey; // Set the selected value
+        }
 
         // Role selection handler
         document.getElementById('role-selector').addEventListener('change', function(e) {
@@ -2749,22 +2857,106 @@
         }
 
         function downloadBySection() {
-            // Download all 5 section files
-            const sections = [
-                'Individual Contributors',
-                'Marketing', 
-                'Operations & Enablement',
-                'People Management',
-                'Sales Leadership & Management'
-            ];
+            const button = event.target;
+            button.textContent = '📦 Creating Section Files...';
+            button.disabled = true;
             
-            // This would trigger downloads for each section
-            alert('Feature coming soon: Download by section (5 separate files)');
+            // Define role groupings by section
+            const sections = {
+                'Individual Contributors': ['bdr-sdr', 'sales-director', 'solutions-architect'],
+                'Marketing': ['marketing-ops', 'abm-manager'],
+                'Operations & Enablement': ['sales-operations', 'bdr-operations', 'revenue-enablement'], 
+                'People Management': ['bdr-manager'],
+                'Sales Leadership & Management': ['chief-of-staff', 'rvp-enterprise', 'director-growth']
+            };
+            
+            let downloadCount = 0;
+            const totalSections = Object.keys(sections).length;
+            
+            // Generate and download each section file
+            Object.entries(sections).forEach(([sectionName, roleKeys], sectionIndex) => {
+                let sectionMarkdown = `# Interview Questions - Section: ${sectionName}\n\n`;
+                sectionMarkdown += `**Purpose:** Comprehensive interview questions for ${sectionName.toLowerCase()} roles\n`;
+                sectionMarkdown += `**Source:** Questions designed for GTM assessment processes\n\n---\n\n`;
+                
+                roleKeys.forEach(roleKey => {
+                    const role = interviewData[roleKey];
+                    if (role) {
+                        sectionMarkdown += generateMarkdownForRole(role) + '\n\n---\n\n';
+                    }
+                });
+                
+                sectionMarkdown += `*Generated by OneView ToolKit Interview Questions - ${new Date().toISOString().slice(0, 10)}*`;
+                
+                // Download the section file with staggered timing
+                setTimeout(() => {
+                    downloadMarkdown(sectionMarkdown, `interview-questions-${sectionName.toLowerCase().replace(/[^a-z0-9]/g, '-')}.md`);
+                    downloadCount++;
+                    
+                    if (downloadCount === totalSections) {
+                        button.textContent = `✅ Downloaded ${totalSections} Section Files!`;
+                        setTimeout(() => {
+                            button.textContent = '📦 Download by Section (5 files)';
+                            button.disabled = false;
+                        }, 2000);
+                    }
+                }, sectionIndex * 300); // Stagger downloads by 300ms per section
+            });
         }
 
         function downloadCompleteGuide() {
-            // Generate complete guide with all roles
-            alert('Feature coming soon: Download complete guide with all roles');
+            const button = event.target;
+            button.textContent = '📚 Creating Complete Guide...';
+            button.disabled = true;
+            
+            try {
+                // Generate comprehensive guide with all roles
+                let completeGuide = `# Complete Interview Questions Guide - OneView ToolKit\n\n`;
+                completeGuide += `**Purpose:** Comprehensive GTM assessment interview frameworks for all roles\n`;
+                completeGuide += `**Total Roles:** 12 comprehensive interview frameworks\n`;
+                completeGuide += `**Source:** OneView Labs GTM assessment process\n`;
+                completeGuide += `**Generated:** ${new Date().toISOString().slice(0, 10)}\n\n`;
+                
+                // Add table of contents
+                completeGuide += `## Table of Contents\n\n`;
+                const allRoleKeys = Object.keys(interviewData);
+                allRoleKeys.forEach((roleKey, index) => {
+                    const role = interviewData[roleKey];
+                    if (role) {
+                        completeGuide += `${index + 1}. [${role.title}](#${role.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')})\n`;
+                    }
+                });
+                completeGuide += `\n---\n\n`;
+                
+                // Add all role content
+                allRoleKeys.forEach(roleKey => {
+                    const role = interviewData[roleKey];
+                    if (role) {
+                        completeGuide += generateMarkdownForRole(role) + '\n\n---\n\n';
+                    }
+                });
+                
+                completeGuide += `## Summary\n\n`;
+                completeGuide += `This complete guide contains ${allRoleKeys.length} comprehensive interview frameworks designed for GTM assessment processes. Each framework includes structured sections, transition statements, and systematic note-taking areas for consistent, effective interviews.\n\n`;
+                completeGuide += `*Generated by OneView ToolKit Interview Questions - ${new Date().toISOString().slice(0, 10)}*`;
+                
+                // Download the complete guide
+                downloadMarkdown(completeGuide, `oneview-interview-questions-complete-guide-${new Date().toISOString().slice(0, 10)}.md`);
+                
+                button.textContent = '✅ Complete Guide Downloaded!';
+                setTimeout(() => {
+                    button.textContent = '📚 Download Complete Guide';
+                    button.disabled = false;
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Complete guide generation failed:', error);
+                button.textContent = '❌ Error - Try Again';
+                setTimeout(() => {
+                    button.textContent = '📚 Download Complete Guide';
+                    button.disabled = false;
+                }, 2000);
+            }
         }
 
         function takeScreenshot() {
