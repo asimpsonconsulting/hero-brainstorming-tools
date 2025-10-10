@@ -268,6 +268,8 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            width: 100%;
+            background: white;
         }
         
         /* Version 1: Modern SaaS Style */
@@ -314,7 +316,7 @@
             font-weight: 600;
             color: #6b7280;
             margin-bottom: 32px;
-            background: #f9fafb;
+            background: #f8fafc;
             padding: 24px 40px;
             border-radius: 8px;
             width: 100%;
@@ -408,7 +410,7 @@
             border-bottom: 2px solid #e5e7eb;
             width: 100%;
             max-width: 100%;
-            background: #f9fafb;
+            background: #f8fafc;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -489,7 +491,7 @@
             font-weight: 600;
             color: #6b7280;
             margin-bottom: 30px;
-            background: #f9fafb;
+            background: #f8fafc;
             padding: 24px 40px;
             border-radius: 8px;
             width: 100%;
@@ -531,6 +533,271 @@
             color: white;
             font-size: 17px;
             font-weight: 500;
+        }
+        
+        /* Version 4: Left-Justified Secondary Hero (Text Left + Image Right) */
+        .version-4 .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: center;
+            text-align: left;
+            min-height: 400px;
+            padding: 0;
+            width: 100%;
+            background: white;
+        }
+        
+        .version-4 .hero-content-area {
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: white;
+        }
+        
+        .version-4 .eyebrow {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #f97316;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        
+        .version-4 .headline {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1f2937;
+            margin-bottom: 18px;
+            max-width: none;
+        }
+        
+        .version-4 .subheadline {
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #6b7280;
+            margin-bottom: 22px;
+            max-width: none;
+        }
+        
+        .version-4 .body-copy {
+            font-size: 17px;
+            line-height: 1.65;
+            color: #6b7280;
+            margin-bottom: 26px;
+            max-width: none;
+        }
+        
+        .version-4 .proof {
+            font-size: 15px;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 30px;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            width: auto;
+            max-width: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .version-4 .cta-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            color: white;
+            padding: 15px 30px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 0;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            align-self: flex-start;
+        }
+        
+        .version-4 .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        
+        .version-4 .hero-image-area {
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+        }
+        
+        .version-4 .hero-image {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 50%, #3b82f6 75%, #06b6d4 100%);
+            height: 100%;
+            width: 100%;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 17px;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .version-4 .hero-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, 
+                transparent 25%, 
+                rgba(255,255,255,0.1) 25%, 
+                rgba(255,255,255,0.1) 50%, 
+                transparent 50%, 
+                transparent 75%, 
+                rgba(255,255,255,0.1) 75%);
+            background-size: 40px 40px;
+            animation: moveStripes 2s linear infinite;
+        }
+        
+        @keyframes moveStripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+        
+        /* Version 5: Image-First Secondary Hero (Image Left + Text Right) */
+        .version-5 .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: center;
+            text-align: left;
+            min-height: 400px;
+            padding: 0;
+            width: 100%;
+            background: white;
+        }
+        
+        .version-5 .hero-image-area {
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            order: 1;
+            position: relative;
+        }
+        
+        .version-5 .hero-content-area {
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            order: 2;
+            background: white;
+        }
+        
+        .version-5 .eyebrow {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #f97316;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        
+        .version-5 .headline {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1f2937;
+            margin-bottom: 18px;
+            max-width: none;
+        }
+        
+        .version-5 .subheadline {
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #6b7280;
+            margin-bottom: 22px;
+            max-width: none;
+        }
+        
+        .version-5 .body-copy {
+            font-size: 17px;
+            line-height: 1.65;
+            color: #6b7280;
+            margin-bottom: 26px;
+            max-width: none;
+        }
+        
+        .version-5 .proof {
+            font-size: 15px;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 30px;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            width: auto;
+            max-width: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .version-5 .cta-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            color: white;
+            padding: 15px 30px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 0;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            align-self: flex-start;
+        }
+        
+        .version-5 .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        
+        .version-5 .hero-image {
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 50%, #f97316 75%, #ef4444 100%);
+            height: 100%;
+            width: 100%;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 17px;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .version-5 .hero-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, 
+                transparent 25%, 
+                rgba(255,255,255,0.1) 25%, 
+                rgba(255,255,255,0.1) 50%, 
+                transparent 50%, 
+                transparent 75%, 
+                rgba(255,255,255,0.1) 75%);
+            background-size: 30px 30px;
+            animation: moveStripes 3s linear infinite;
         }
         
         .hero-image {
@@ -622,18 +889,44 @@
             
             .version-1 .headline,
             .version-2 .headline,
-            .version-3 .headline {
+            .version-3 .headline,
+            .version-4 .headline,
+            .version-5 .headline {
                 font-size: 36px;
             }
             
             .version-1 .subheadline,
             .version-2 .subheadline,
-            .version-3 .subheadline {
+            .version-3 .subheadline,
+            .version-4 .subheadline,
+            .version-5 .subheadline {
                 font-size: 18px;
             }
             
             .hero-section {
                 padding: 40px 24px;
+            }
+            
+            /* Mobile layout for Version 4 & 5 */
+            .version-4 .hero-section,
+            .version-5 .hero-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                min-height: auto;
+                padding: 40px 24px;
+            }
+            
+            .version-4 .hero-content-area,
+            .version-5 .hero-content-area {
+                padding: 0;
+                text-align: center;
+                order: 2;
+            }
+            
+            .version-4 .hero-image-area,
+            .version-5 .hero-image-area {
+                order: 1;
+                min-height: 250px;
             }
         }
     </style>
@@ -955,6 +1248,162 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Version 4: Left-Justified Secondary Hero (Text Left + Image Right) -->
+                <div class="example version-4">
+                    <div class="example-label">Version 4: Left-Justified Secondary (Text Left + Image Right)</div>
+                    <div class="navigation">
+                        <div class="logo">
+                            <img src="https://interfaces-cdn.zapier.com/3bd0bacb-6f98-41e7-98c7-0e6fae14b251/1vLABShorizontal09.png" alt="OneViewLabs Logo" />
+                        </div>
+                        <div class="nav-links">
+                            <div class="nav-item">
+                                <div class="nav-eyebrow"></div>
+                                <a class="nav-link active">Home</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-two"></div>
+                                <a class="nav-link" data-field="nav-two">Features</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-three"></div>
+                                <a class="nav-link" data-field="nav-three">About</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-four"></div>
+                                <a class="nav-link" data-field="nav-four">Resources</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-five"></div>
+                                <a class="nav-link" data-field="nav-five"></a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow"></div>
+                                <button class="nav-cta" data-field="header-cta">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-section">
+                        <div class="hero-content-area">
+                            <div class="eyebrow" data-field="eyebrow">INTRODUCING</div>
+                            <h1 class="headline" data-field="heading">Revolutionary Analytics Platform</h1>
+                            <div class="subheadline" data-field="subheading">Get deeper insights faster than ever before</div>
+                            <p class="body-copy" data-field="body">Transform raw data into actionable business insights with our AI-powered analytics platform. Make better decisions faster with real-time visualizations and predictive modeling.</p>
+                            <div class="proof">SentinelOne • Matillion • Thought • INTAPP • Nektar</div>
+                            <button class="cta-button" data-field="primary-cta">Start Your Free Trial</button>
+                        </div>
+                        <div class="hero-image-area">
+                            <div class="hero-image">Visual Impact Area</div>
+                        </div>
+                    </div>
+                    <div class="specs">
+                        <h3>Typography Specifications</h3>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">Layout</div>
+                                <div class="spec-value">Grid 1fr 1fr, text left, image right</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Eyebrow</div>
+                                <div class="spec-value">13px, uppercase, 600 weight, brand orange</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">H1 Headline</div>
+                                <div class="spec-value">48px, 700 weight, 1.15 line-height, gray-800</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Subheadline</div>
+                                <div class="spec-value">22px, 400 weight, 1.5 line-height, gray-500</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Body Copy</div>
+                                <div class="spec-value">17px, 1.65 line-height, gray-500</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">CTA Button</div>
+                                <div class="spec-value">17px, 600 weight, blue-cyan gradient</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Version 5: Image-First Secondary Hero (Image Left + Text Right) -->
+                <div class="example version-5">
+                    <div class="example-label">Version 5: Image-First Secondary (Image Left + Text Right)</div>
+                    <div class="navigation">
+                        <div class="logo">
+                            <img src="https://interfaces-cdn.zapier.com/3bd0bacb-6f98-41e7-98c7-0e6fae14b251/1vLABShorizontal09.png" alt="OneViewLabs Logo" />
+                        </div>
+                        <div class="nav-links">
+                            <div class="nav-item">
+                                <div class="nav-eyebrow"></div>
+                                <a class="nav-link active">Home</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-two"></div>
+                                <a class="nav-link" data-field="nav-two">Features</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-three"></div>
+                                <a class="nav-link" data-field="nav-three">About</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-four"></div>
+                                <a class="nav-link" data-field="nav-four">Resources</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-five"></div>
+                                <a class="nav-link" data-field="nav-five"></a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow"></div>
+                                <button class="nav-cta" data-field="header-cta">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-section">
+                        <div class="hero-image-area">
+                            <div class="hero-image">Visual Impact Area</div>
+                        </div>
+                        <div class="hero-content-area">
+                            <div class="eyebrow" data-field="eyebrow">INTRODUCING</div>
+                            <h1 class="headline" data-field="heading">Revolutionary Analytics Platform</h1>
+                            <div class="subheadline" data-field="subheading">Get deeper insights faster than ever before</div>
+                            <p class="body-copy" data-field="body">Transform raw data into actionable business insights with our AI-powered analytics platform. Make better decisions faster with real-time visualizations and predictive modeling.</p>
+                            <div class="proof">SentinelOne • Matillion • Thought • INTAPP • Nektar</div>
+                            <button class="cta-button" data-field="primary-cta">Start Your Free Trial</button>
+                        </div>
+                    </div>
+                    <div class="specs">
+                        <h3>Typography Specifications</h3>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">Layout</div>
+                                <div class="spec-value">Grid 1fr 1fr, image left, text right</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Eyebrow</div>
+                                <div class="spec-value">13px, uppercase, 600 weight, brand orange</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">H1 Headline</div>
+                                <div class="spec-value">48px, 700 weight, 1.15 line-height, gray-800</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Subheadline</div>
+                                <div class="spec-value">22px, 400 weight, 1.5 line-height, gray-500</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Body Copy</div>
+                                <div class="spec-value">17px, 1.65 line-height, gray-500</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">CTA Button</div>
+                                <div class="spec-value">17px, 600 weight, blue-cyan gradient</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1023,11 +1472,42 @@
             button.disabled = true;
             
             try {
+                // Temporarily fix gradient text for screenshots (Version 1 only has gradient text)
+                const gradientHeadlines = document.querySelectorAll('.version-1 .headline');
+                const originalStyles = [];
+                
+                gradientHeadlines.forEach((headline, index) => {
+                    // Store computed styles instead of inline styles
+                    const computedStyle = window.getComputedStyle(headline);
+                    originalStyles[index] = {
+                        cssText: headline.style.cssText
+                    };
+                    
+                    // Apply solid color for screenshot - override the CSS gradient
+                    headline.style.cssText = `
+                        font-size: 56px !important;
+                        font-weight: 700 !important;
+                        line-height: 1.1 !important;
+                        color: #f97316 !important;
+                        background: none !important;
+                        -webkit-background-clip: unset !important;
+                        -webkit-text-fill-color: unset !important;
+                        background-clip: unset !important;
+                        margin-bottom: 20px;
+                        max-width: 900px;
+                    `;
+                });
+                
                 const examples = document.querySelector('.examples');
                 const canvas = await html2canvas(examples, {
                     scale: 1,
                     useCORS: true,
                     backgroundColor: '#f9fafb'
+                });
+                
+                // Restore original styles
+                gradientHeadlines.forEach((headline, index) => {
+                    headline.style.cssText = originalStyles[index].cssText;
                 });
                 
                 // Create download link

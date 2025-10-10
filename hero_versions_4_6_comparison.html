@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Versions 4 & 5 Comparison - OneView ToolKit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f9fafb;
+            padding: 40px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-theme {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .preview-header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .dark-theme .preview-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .preview-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+        
+        .dark-theme .preview-header h1 {
+            color: #ffffff;
+        }
+        
+        .preview-header p {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+        
+        .dark-theme .preview-header p {
+            color: #d1d5db;
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .version-section {
+            margin-bottom: 50px;
+        }
+        
+        .version-header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 12px 12px 0 0;
+            border-bottom: 2px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dark-theme .version-header {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .version-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .dark-theme .version-title {
+            color: #ffffff;
+        }
+        
+        .version-badge {
+            padding: 6px 16px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .v4-badge {
+            background: #fef3e7;
+            color: #f97316;
+        }
+        
+        .v6-badge {
+            background: #ecfdf5;
+            color: #22c55e;
+        }
+        
+        .dark-theme .v4-badge {
+            background: rgba(249, 115, 22, 0.2);
+        }
+        
+        .dark-theme .v6-badge {
+            background: rgba(34, 197, 94, 0.2);
+        }
+        
+        .image-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .toggle-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .toggle-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .toggle-btn.active {
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+        }
+        
+        /* Version 4: Text Left, Image Right */
+        .hero-version-4 {
+            background: white;
+            border-radius: 0 0 16px 16px;
+            padding: 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+            align-items: center;
+        }
+        
+        .dark-theme .hero-version-4 {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none;
+        }
+        
+        /* Version 5: Image Left, Text Right */
+        .hero-version-5 {
+            background: white;
+            border-radius: 0 0 16px 16px;
+            padding: 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+            align-items: center;
+        }
+        
+        .dark-theme .hero-version-6 {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none;
+        }
+        
+        .hero-version-4.no-image,
+        .hero-version-5.no-image {
+            grid-template-columns: 1fr;
+        }
+        
+        .hero-content {
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+        
+        .hero-eyebrow {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #f97316;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        
+        .hero-headline {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1f2937;
+            margin-bottom: 18px;
+        }
+        
+        .dark-theme .hero-headline {
+            color: #ffffff;
+        }
+        
+        .hero-subheadline {
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #6b7280;
+            margin-bottom: 22px;
+        }
+        
+        .dark-theme .hero-subheadline {
+            color: #e5e7eb;
+        }
+        
+        .hero-body {
+            font-size: 17px;
+            line-height: 1.65;
+            color: #6b7280;
+            margin-bottom: 32px;
+        }
+        
+        .dark-theme .hero-body {
+            color: #d1d5db;
+        }
+        
+        .hero-cta {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            color: white;
+            padding: 15px 30px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            align-self: flex-start;
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        
+        .hero-image-container {
+            position: relative;
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+        
+        .dark-theme .hero-image-container {
+            background: #1a1a1a;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+        
+        .image-placeholder-4 {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 50%, #3b82f6 75%, #06b6d4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .image-placeholder-5 {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 50%, #f97316 75%, #ef4444 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .image-placeholder-4::before,
+        .image-placeholder-5::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, 
+                transparent 25%, 
+                rgba(255,255,255,0.1) 25%, 
+                rgba(255,255,255,0.1) 50%, 
+                transparent 50%, 
+                transparent 75%, 
+                rgba(255,255,255,0.1) 75%);
+            background-size: 40px 40px;
+            animation: moveStripes 2s linear infinite;
+        }
+        
+        @keyframes moveStripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+        
+        /* Version 5 specific - Image comes first in order */
+        .hero-version-5 .hero-image-container {
+            order: 1;
+        }
+        
+        .hero-version-5 .hero-content {
+            order: 2;
+        }
+        
+            .hero-version-4.no-image .hero-content,
+            .hero-version-5.no-image .hero-content {
+                padding: 60px 80px;
+                text-align: center;
+            }
+        
+        @media (max-width: 768px) {
+            .hero-version-4,
+            .hero-version-5 {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            
+            .hero-image-container {
+                min-height: 250px;
+                order: 1 !important;
+            }
+            
+            .hero-content {
+                padding: 40px 30px;
+                text-align: center;
+                order: 2 !important;
+            }
+            
+            .hero-version-4.no-image .hero-content,
+            .hero-version-5.no-image .hero-content {
+                padding: 40px 30px;
+            }
+            
+            .hero-headline {
+                font-size: 36px;
+            }
+            
+            .hero-subheadline {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="preview-header">
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Theme</button>
+            <h1>Hero Versions 4 & 5 Comparison</h1>
+            <p>Side-by-side preview of both layout options with Version 3 typography and theme support</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" style="display: inline-block; padding: 8px 16px; background: #f3f4f6; color: #6b7280; text-decoration: none; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #e5e7eb; margin-right: 10px;">← OneView ToolKit</a>
+                <a href="hero_version_4_preview.html" style="display: inline-block; padding: 8px 16px; background: #fef3e7; color: #f97316; text-decoration: none; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #fed7aa; margin-right: 10px;">Version 4 Only</a>
+                <a href="hero_version_6_preview.html" style="display: inline-block; padding: 8px 16px; background: #ecfdf5; color: #22c55e; text-decoration: none; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #bbf7d0; margin-right: 10px;">Version 5 Only</a>
+                <a href="style_guide_hub.html" style="display: inline-block; padding: 8px 16px; background: #f3f4f6; color: #6b7280; text-decoration: none; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #e5e7eb;">📚 Style Guide</a>
+            </div>
+            
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                <button class="toggle-btn active" onclick="toggleImages(true)" id="global-with-image">🖼️ Show Images</button>
+                <button class="toggle-btn" onclick="toggleImages(false)" id="global-no-image">📝 Text Only</button>
+            </div>
+        </div>
+        
+        <!-- Version 4: Text Left, Image Right -->
+        <div class="version-section">
+            <div class="version-header">
+                <div>
+                    <div class="version-title">Version 4: Content-First Layout</div>
+                    <div style="font-size: 14px; color: #6b7280; margin-top: 2px;" class="dark-theme" style="color: #d1d5db;">Text Left + Image Right • Content-driven approach</div>
+                </div>
+                <div class="version-badge v4-badge">Version 4</div>
+            </div>
+            
+            <div class="hero-version-4" id="hero-v4">
+                <div class="hero-content">
+                    <div class="hero-eyebrow">MAXIMIZE ROI</div>
+                    <h1 class="hero-headline">Turn Insights Into Action</h1>
+                    <div class="hero-subheadline">Optimize your engagement capacity for measurable pipeline performance improvements</div>
+                    <p class="hero-body">Get personalized insights and actionable recommendations that help your GTM teams work smarter, not harder.</p>
+                    <a href="#" class="hero-cta">Begin Your Assessment</a>
+                </div>
+                
+                <div class="hero-image-container" id="v4-image">
+                    <div class="image-placeholder-4">
+                        🎨 Dynamic Visual Area
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Version 5: Image Left, Text Right -->
+        <div class="version-section">
+            <div class="version-header">
+                <div>
+                    <div class="version-title">Version 5: Visual-First Layout</div>
+                    <div style="font-size: 14px; color: #6b7280; margin-top: 2px;" class="dark-theme" style="color: #d1d5db;">Image Left + Text Right • Visual-driven approach</div>
+                </div>
+                <div class="version-badge v5-badge">Version 5</div>
+            </div>
+            
+            <div class="hero-version-5" id="hero-v5">
+                <div class="hero-image-container" id="v5-image">
+                    <div class="image-placeholder-5">
+                        🌈 Visual Impact Area
+                    </div>
+                </div>
+                
+                <div class="hero-content">
+                    <div class="hero-eyebrow">UNLOCK POTENTIAL</div>
+                    <h1 class="hero-headline">Visual-First Engagement</h1>
+                    <div class="hero-subheadline">See how leading GTM teams transform their approach with data-driven insights</div>
+                    <p class="hero-body">Comprehensive assessment frameworks that reveal optimization opportunities across your entire revenue organization.</p>
+                    <a href="#" class="hero-cta">Explore Solutions</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Usage Guidelines -->
+        <div style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" class="dark-theme" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h3 style="font-size: 20px; font-weight: 700; color: #1f2937; margin-bottom: 20px; text-align: center;" class="dark-theme" style="color: #ffffff;">📋 Usage Guidelines</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+                <div style="background: #fef3e7; padding: 20px; border-radius: 12px; border-left: 4px solid #f97316;">
+                    <div style="font-size: 16px; font-weight: 600; color: #f97316; margin-bottom: 10px;">🎯 Version 4: Content-First</div>
+                    <ul style="font-size: 14px; color: #92400e; line-height: 1.6; list-style-position: inside;">
+                        <li>Lead with value propositions</li>
+                        <li>Complex messaging that needs explanation</li>
+                        <li>Text-heavy feature descriptions</li>
+                        <li>Educational content sections</li>
+                    </ul>
+                </div>
+                
+                <div style="background: #ecfdf5; padding: 20px; border-radius: 12px; border-left: 4px solid #22c55e;">
+                    <div style="font-size: 16px; font-weight: 600; color: #22c55e; margin-bottom: 10px;">🌈 Version 5: Visual-First</div>
+                    <ul style="font-size: 14px; color: #065f46; line-height: 1.6; list-style-position: inside;">
+                        <li>Product demonstrations</li>
+                        <li>Dashboard/interface showcases</li>
+                        <li>Results and outcome visuals</li>
+                        <li>Brand imagery and lifestyle shots</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px; padding: 15px; background: #f0f9ff; border-radius: 8px; color: #0369a1; font-size: 14px;" class="dark-theme" style="background: rgba(59, 130, 246, 0.1); color: #93c5fd;">
+                <strong>Both versions:</strong> Version 4 (content-first) and Version 5 (visual-first) use Version 3 typography, support light/dark themes, work with/without images, and are perfect for secondary hero sections below main content.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const button = document.querySelector('.theme-toggle');
+            
+            if (document.body.classList.contains('dark-theme')) {
+                button.textContent = '☀️ Light Theme';
+            } else {
+                button.textContent = '🌙 Dark Theme';
+            }
+        }
+        
+        function toggleImages(hasImages) {
+            const v4ImageContainer = document.getElementById('v4-image');
+            const v5ImageContainer = document.getElementById('v5-image');
+            const v4Hero = document.getElementById('hero-v4');
+            const v5Hero = document.getElementById('hero-v5');
+            const withImageBtn = document.getElementById('global-with-image');
+            const noImageBtn = document.getElementById('global-no-image');
+            
+            if (hasImages) {
+                v4Hero.classList.remove('no-image');
+                v5Hero.classList.remove('no-image');
+                v4ImageContainer.style.display = 'flex';
+                v5ImageContainer.style.display = 'flex';
+                withImageBtn.classList.add('active');
+                noImageBtn.classList.remove('active');
+            } else {
+                v4Hero.classList.add('no-image');
+                v5Hero.classList.add('no-image');
+                v4ImageContainer.style.display = 'none';
+                v5ImageContainer.style.display = 'none';
+                withImageBtn.classList.remove('active');
+                noImageBtn.classList.add('active');
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add some nice loading animations
+            const sections = document.querySelectorAll('.version-section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    section.style.transition = 'all 0.8s ease-out';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 300);
+            });
+        });
+    </script>
+</body>
+</html>

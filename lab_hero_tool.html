@@ -435,6 +435,276 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        /* Version 4: Left-Justified Secondary Hero (Text Left + Image Right) */
+        .version-4 .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: center;
+            text-align: left;
+            min-height: 400px;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .version-4 .hero-content-area {
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .version-4 .eyebrow {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #f97316;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        
+        .version-4 .headline {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1f2937;
+            margin-bottom: 18px;
+            max-width: none;
+        }
+        
+        .version-4 .subheadline {
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #6b7280;
+            margin-bottom: 22px;
+            max-width: none;
+        }
+        
+        .version-4 .body-copy {
+            font-size: 17px;
+            line-height: 1.65;
+            color: #6b7280;
+            margin-bottom: 26px;
+            max-width: none;
+        }
+        
+        .version-4 .proof {
+            font-size: 15px;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 30px;
+            background: #f8fafc;
+            padding: 24px 40px;
+            border-radius: 8px;
+            display: block;
+            text-align: left;
+        }
+        
+        .version-4 .cta-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            color: white;
+            padding: 15px 30px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            align-self: flex-start;
+        }
+        
+        .version-4 .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        
+        .version-4 .hero-image-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+        }
+        
+        .version-4 .hero-image {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 50%, #3b82f6 75%, #06b6d4 100%);
+            height: 100%;
+            width: 100%;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 17px;
+            font-weight: 500;
+        }
+        
+        /* Version 4 Dark Theme Overrides */
+        .dark-lab.version-4 .headline {
+            background: linear-gradient(135deg, #ffffff 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dark-lab.version-4 .subheadline {
+            color: #e5e7eb;
+        }
+        
+        .dark-lab.version-4 .body-copy {
+            color: #d1d5db;
+        }
+        
+        .dark-lab.version-4 .proof {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e5e7eb;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-lab.version-4 .hero-image {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Version 5: Image-First Secondary Hero (Image Left + Text Right) */
+        .version-5 .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: center;
+            text-align: left;
+            min-height: 400px;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .version-5 .hero-image-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            order: 1;
+            position: relative;
+        }
+        
+        .version-5 .hero-content-area {
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            order: 2;
+        }
+        
+        .version-5 .eyebrow {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #f97316;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        
+        .version-5 .headline {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1f2937;
+            margin-bottom: 18px;
+            max-width: none;
+        }
+        
+        .version-5 .subheadline {
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #6b7280;
+            margin-bottom: 22px;
+            max-width: none;
+        }
+        
+        .version-5 .body-copy {
+            font-size: 17px;
+            line-height: 1.65;
+            color: #6b7280;
+            margin-bottom: 26px;
+            max-width: none;
+        }
+        
+        .version-5 .proof {
+            font-size: 15px;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 30px;
+            background: #f8fafc;
+            padding: 24px 40px;
+            border-radius: 8px;
+            display: block;
+            text-align: left;
+        }
+        
+        .version-5 .cta-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            color: white;
+            padding: 15px 30px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            align-self: flex-start;
+        }
+        
+        .version-5 .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        
+        .version-5 .hero-image {
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 50%, #f97316 75%, #ef4444 100%);
+            height: 100%;
+            width: 100%;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 17px;
+            font-weight: 500;
+        }
+        
+        /* Version 5 Dark Theme Overrides */
+        .dark-lab.version-5 .headline {
+            background: linear-gradient(135deg, #ffffff 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dark-lab.version-5 .subheadline {
+            color: #e5e7eb;
+        }
+        
+        .dark-lab.version-5 .body-copy {
+            color: #d1d5db;
+        }
+        
+        .dark-lab.version-5 .proof {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e5e7eb;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-lab.version-5 .hero-image {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
         .dark-lab .specs {
             background: rgba(0, 0, 0, 0.3);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -530,6 +800,38 @@
             .hero-toc .toc-item {
                 margin-bottom: 0;
                 flex: 0 0 auto;
+            }
+            
+            /* Mobile layout for Version 4 & 5 */
+            .version-4 .hero-section,
+            .version-5 .hero-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                min-height: auto;
+                padding: 40px 24px;
+            }
+            
+            .version-4 .hero-content-area,
+            .version-5 .hero-content-area {
+                padding: 0;
+                text-align: center;
+                order: 2;
+            }
+            
+            .version-4 .hero-image-area,
+            .version-5 .hero-image-area {
+                order: 1;
+                min-height: 250px;
+            }
+            
+            .version-4 .headline,
+            .version-5 .headline {
+                font-size: 36px;
+            }
+            
+            .version-4 .subheadline,
+            .version-5 .subheadline {
+                font-size: 18px;
             }
         }
         
@@ -1187,6 +1489,162 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Version 4: Left-Justified Secondary Hero (Text Left + Image Right) -->
+                <div class="example version-4 dark-lab">
+                    <div class="example-label">Version 4: Left-Justified Secondary (Text Left + Image Right)</div>
+                    <div class="navigation">
+                        <div class="logo">
+                            <img src="https://interfaces-cdn.zapier.com/3bd0bacb-6f98-41e7-98c7-0e6fae14b251/1vLABShorizontal09.png" alt="OneViewLabs Logo" />
+                        </div>
+                        <div class="nav-links">
+                            <div class="nav-item">
+                                <div class="nav-eyebrow"></div>
+                                <a class="nav-link active">Home</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-two"></div>
+                                <a class="nav-link" data-field="nav-two">Features</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-three"></div>
+                                <a class="nav-link" data-field="nav-three">About</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-four"></div>
+                                <a class="nav-link" data-field="nav-four">Resources</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-five"></div>
+                                <a class="nav-link" data-field="nav-five"></a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow"></div>
+                                <button class="nav-cta" data-field="header-cta">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-section">
+                        <div class="hero-content-area">
+                            <div class="eyebrow" data-field="eyebrow">INTRODUCING</div>
+                            <h1 class="headline" data-field="heading">Revolutionary Analytics Platform</h1>
+                            <div class="subheadline" data-field="subheading">Get deeper insights faster than ever before</div>
+                            <p class="body-copy" data-field="body">Transform raw data into actionable business insights with our AI-powered analytics platform. Make better decisions faster with real-time visualizations and predictive modeling.</p>
+                            <div class="proof">SentinelOne • Matillion • Thought • INTAPP • Nektar</div>
+                            <button class="cta-button" data-field="primary-cta">Start Your Free Trial</button>
+                        </div>
+                        <div class="hero-image-area">
+                            <div class="hero-image">Visual Impact Area</div>
+                        </div>
+                    </div>
+                    <div class="specs">
+                        <h3>Typography Specifications</h3>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">Layout</div>
+                                <div class="spec-value">Grid 1fr 1fr, text left, image right</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Eyebrow</div>
+                                <div class="spec-value">13px, uppercase, 600 weight, brand orange</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">H1 Headline</div>
+                                <div class="spec-value">48px, 700 weight, 1.15 line-height, gradient</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Subheadline</div>
+                                <div class="spec-value">22px, 400 weight, 1.5 line-height, light gray</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Body Copy</div>
+                                <div class="spec-value">17px, 1.65 line-height, light gray</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">CTA Button</div>
+                                <div class="spec-value">17px, 600 weight, blue-cyan gradient</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Version 5: Image-First Secondary Hero (Image Left + Text Right) -->
+                <div class="example version-5 dark-lab">
+                    <div class="example-label">Version 5: Image-First Secondary (Image Left + Text Right)</div>
+                    <div class="navigation">
+                        <div class="logo">
+                            <img src="https://interfaces-cdn.zapier.com/3bd0bacb-6f98-41e7-98c7-0e6fae14b251/1vLABShorizontal09.png" alt="OneViewLabs Logo" />
+                        </div>
+                        <div class="nav-links">
+                            <div class="nav-item">
+                                <div class="nav-eyebrow"></div>
+                                <a class="nav-link active">Home</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-two"></div>
+                                <a class="nav-link" data-field="nav-two">Features</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-three"></div>
+                                <a class="nav-link" data-field="nav-three">About</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-four"></div>
+                                <a class="nav-link" data-field="nav-four">Resources</a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow" data-field="nav-eyebrow-five"></div>
+                                <a class="nav-link" data-field="nav-five"></a>
+                            </div>
+                            <div class="nav-item">
+                                <div class="nav-eyebrow"></div>
+                                <button class="nav-cta" data-field="header-cta">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-section">
+                        <div class="hero-image-area">
+                            <div class="hero-image">Visual Impact Area</div>
+                        </div>
+                        <div class="hero-content-area">
+                            <div class="eyebrow" data-field="eyebrow">INTRODUCING</div>
+                            <h1 class="headline" data-field="heading">Revolutionary Analytics Platform</h1>
+                            <div class="subheadline" data-field="subheading">Get deeper insights faster than ever before</div>
+                            <p class="body-copy" data-field="body">Transform raw data into actionable business insights with our AI-powered analytics platform. Make better decisions faster with real-time visualizations and predictive modeling.</p>
+                            <div class="proof">SentinelOne • Matillion • Thought • INTAPP • Nektar</div>
+                            <button class="cta-button" data-field="primary-cta">Start Your Free Trial</button>
+                        </div>
+                    </div>
+                    <div class="specs">
+                        <h3>Typography Specifications</h3>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">Layout</div>
+                                <div class="spec-value">Grid 1fr 1fr, image left, text right</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Eyebrow</div>
+                                <div class="spec-value">13px, uppercase, 600 weight, brand orange</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">H1 Headline</div>
+                                <div class="spec-value">48px, 700 weight, 1.15 line-height, gradient</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Subheadline</div>
+                                <div class="spec-value">22px, 400 weight, 1.5 line-height, light gray</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Body Copy</div>
+                                <div class="spec-value">17px, 1.65 line-height, light gray</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">CTA Button</div>
+                                <div class="spec-value">17px, 600 weight, blue-cyan gradient</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1277,16 +1735,40 @@
             button.disabled = true;
             
             try {
+                // Temporarily fix gradient text for screenshots across all dark theme versions
+                const allGradientHeadlines = document.querySelectorAll('.dark-lab .headline');
+                const originalStyles = [];
+                
+                allGradientHeadlines.forEach((headline, index) => {
+                    originalStyles[index] = {
+                        cssText: headline.style.cssText
+                    };
+                    
+                    // Apply solid brand orange for dark theme screenshots (matches the gradient end color)
+                    headline.style.cssText = `
+                        color: #f97316 !important;
+                        background: none !important;
+                        -webkit-background-clip: unset !important;
+                        -webkit-text-fill-color: unset !important;
+                        background-clip: unset !important;
+                    ` + headline.style.cssText.replace(/background[^;]*;?/g, '').replace(/color[^;]*;?/g, '').replace(/-webkit-[^;]*;?/g, '');
+                });
+                
                 const examples = document.querySelector('.examples');
                 const canvas = await html2canvas(examples, {
                     scale: 1,
                     useCORS: true,
-                    backgroundColor: '#f9fafb'
+                    backgroundColor: '#1a1a1a'
+                });
+                
+                // Restore original gradient styles
+                allGradientHeadlines.forEach((headline, index) => {
+                    headline.style.cssText = originalStyles[index].cssText;
                 });
                 
                 // Create download link
                 const link = document.createElement('a');
-                link.download = `hero-variations-${new Date().toISOString().slice(0, 10)}.png`;
+                link.download = `hero-dark-variations-${new Date().toISOString().slice(0, 10)}.png`;
                 link.href = canvas.toDataURL();
                 
                 // Trigger download
